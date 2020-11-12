@@ -1,0 +1,41 @@
+/* TODO */
+
+body {
+	background-color: #d1d6cf;
+}
+
+.center {
+	background: #f8dccd;
+	height: 500px;
+	width: 750px;
+	text-align: center;
+}
+
+.header {
+	text-align: center;
+	padding-top: 10%;
+	font-size: 50px;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.button {
+	display: inline-block;
+	background-color: #f29b67;
+	text-align: center;
+	padding: 5px;
+	font-size: 20px;
+	border: white solid 5px;
+	border-radius: 10%;
+}
+
+/* move slightly up on hover */
+.button:hover {
+	-webkit-transform: translateY(-3px);
+	transform: translateY(-3px);
+}
+
+/* TODO */
