@@ -3,9 +3,9 @@ const OBSTACLE_HEIGHT = 400;
 const OBSTACLE_GAP = 150;
 
 let start_x = window.innerWidth - 80;
-let chimney_pic = "../../images/chimney_temp.png";
-let icicle_pic = "../../images/ice_temp.png";
-let coin_pic = "../../images/coin_temp.png"
+let chimney_pic = "../../images/chimney.svg";
+let icicle_pic = "../../images/icicle.svg";
+let coin_pic = "../../images/coin.svg"
 let movement_interval_handle;
 let obstacle_idx = 0;
 
@@ -67,4 +67,9 @@ function move_obstacles(id){
             // console.log("moving item");
         }, i * 10);
     }
+}
+
+function increase_Score(){
+    let score = parseInt($("#score").text().slice(7)) + 1;
+    $("#score").text("Score: " + score);
 }
