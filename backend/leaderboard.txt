@@ -1,0 +1,10 @@
+ass 200
+dave 200
+dave 99 
+olive 98 
+johnny 98 
+angela 98 
+jason 69
+steve 69
+aus 56 
+paul 55 

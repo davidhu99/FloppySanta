@@ -1,21 +1,21 @@
-body{
-    background-color: #c0d6e4;
-    margin: 0;
-    height: 100%; 
-    overflow: hidden;
+body {
+	background-color: #62a2ca;
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
 }
 
-.chimney{
-    width: 80px;
-    height: 400px;
+.chimney {
+	width: 80px;
+	height: 400px;
 }
 
-.icicle{
-    width: 80px;
-    height: 400px;
+.icicle {
+	width: 80px;
+	height: 400px;
 }
 
-.coin{
-    width: 60px;
-    height: 60px;
+.coin {
+	width: 60px;
+	height: 60px;
 }

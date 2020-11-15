@@ -1,0 +1,18 @@
+.submit {
+	text-align: center;
+}
+
+.invalid {
+	background-color: red;
+	overflow: hidden;
+}
+
+.leaderboard {
+	text-align: center;
+	font-size: 30px;
+}
+
+ol {
+	display: table;
+	margin: 0 auto;
+}
