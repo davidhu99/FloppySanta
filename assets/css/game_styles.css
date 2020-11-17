@@ -20,9 +20,22 @@ body {
     height: 60px;
 }
 
+.present{
+	width: 40px;
+	height: auto;
+}
+
 #score{
     font-weight: bold;
     font-size: 50px;
     position: relative;
     margin-left: 80%;
+}
+
+#player{
+	top: 50%;
+	left: 20%;
+	position: absolute;
+	display: inline-block;
+	z-index: 2;
 }
