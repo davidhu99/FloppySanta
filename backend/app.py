@@ -20,6 +20,7 @@ def submit():
         score_list.pop() 
 
         score_list.append(username + ' ' + str(score))
+        
         score_list = sorted(score_list, key=lambda s:int(s.split()[1]), reverse=True)
 
         with open('leaderboard.txt', 'w') as writer:
