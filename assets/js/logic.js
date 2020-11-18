@@ -19,8 +19,17 @@ let present_idx = 0;
 let player;
 
 $(document).ready( function() {
-    player = $('#player');  // set the global player handle
+    // set the global player handle
+    player = $('#player');
+
+    // user keyboard input
     $(window).keydown(keydownRouter);
+
+    // periodically check for collisions
+    setInterval(function() {
+        checkCollisions();
+    }, 25);
+
     console.log("begin game")
     start_game();
 });
@@ -174,3 +183,86 @@ function isColliding(o1, o2) {
     }
     return false;
 }
+
+// 1. santa collision with icicle/chimney -> game over
+// 2. santa collision with coin -> add to coin count
+// 3. santa collision with ground -> game over
+// 4. present collision with chimney -> add to score
+// 5. present collision with icicle/ground/non-chimney -> subtract from score
+// 6. santa NON-collision with icicle/chimney -> add to score
+function checkCollisions() {
+    
+}
+
+// function checkCollisionsRef() {
+//     if (isColliding(player, paradeFloat2) || wouldCollideLeft()) {
+//       // console.log("front");
+//       paradeFloat2.stop();
+//       paradeFloat1.stop();
+//     }
+//     var items = $('[id^="i-"]');
+//     for (var i = 0; i < items.length; i++) {
+//         if (isTouchingItem(items[i]) && items[i].style.backgroundColor != "yellow") {
+//             items[i].style.border = "2px solid yellow";
+//             items[i].style.backgroundColor = "yellow";
+//             items[i].style.borderRadius = "100%";
+//             var id = "#" + items[i].id;
+//             setTimeout(function() {
+//                 $(id).fadeTo(1000, 0, function() {
+//                     $(id).remove();
+//                 })
+//             }, 0);
+//             $(id).fadeTo(1000, 0, function() {
+//                 $(id).remove();
+//             });
+//             var itemClass = items[i].getElementsByTagName('img')[0].className;
+//             if (itemClass == "throwingItemBeads") {
+//                 beadsCounter[0].innerHTML = String(parseInt(beadsCounter[0].innerHTML) + 1);
+//                 gwhScore[0].innerHTML = String(parseInt(gwhScore[0].innerHTML) + 100);
+//                 chimeAudio.pause();
+//                 chimeAudio.currentTime = 0;
+//                 dingAudio.pause();
+//                 dingAudio.currentTime = 0;
+//                 obstacleAudio.pause();
+//                 obstacleAudio.currentTime = 0;
+//                 damageAudio.pause();
+//                 damageAudio.currentTime = 0;
+//                 var nopromise = {
+//                     catch : new Function()
+//                 };
+//                 (chimeAudio.play() || nopromise).catch(function(){});
+//             } else if (itemClass == "throwingItemCandy") {
+//                 candyCounter[0].innerHTML = String(parseInt(candyCounter[0].innerHTML) + 1);
+//                 gwhScore[0].innerHTML = String(parseInt(gwhScore[0].innerHTML) + 100);
+//                 chimeAudio.pause();
+//                 chimeAudio.currentTime = 0;
+//                 dingAudio.pause();
+//                 dingAudio.currentTime = 0;
+//                 obstacleAudio.pause();
+//                 obstacleAudio.currentTime = 0;
+//                 damageAudio.pause();
+//                 damageAudio.currentTime = 0;
+//                 var nopromise = {
+//                     catch : new Function()
+//                 };
+//                 (dingAudio.play() || nopromise).catch(function(){});
+//             } else {
+//                 gwhScore[0].innerHTML = String(0);
+//                 beadsCounter[0].innerHTML = String(0);
+//                 candyCounter[0].innerHTML = String(0);
+//                 chimeAudio.pause();
+//                 chimeAudio.currentTime = 0;
+//                 dingAudio.pause();
+//                 dingAudio.currentTime = 0;
+//                 obstacleAudio.pause();
+//                 obstacleAudio.currentTime = 0;
+//                 damageAudio.pause();
+//                 damageAudio.currentTime = 0;
+//                 var nopromise = {
+//                     catch : new Function()
+//                 };
+//                 (damageAudio.play() || nopromise).catch(function(){});
+//             }
+//         }
+//     }
+// }
