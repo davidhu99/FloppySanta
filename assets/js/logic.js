@@ -36,13 +36,13 @@ $(document).ready( function() {
 
 function start_game(){
     movement_interval_handle = setInterval(create_obstacle, GENERATE_SPEED);
-    // gravity_interval_handle = setInterval(function() {
-    //     let newPos = parseInt(player.css('top'))+15;
-    //     if (newPos > maxPersonPosY) {
-    //         newPos = maxPersonPosY;
-    //     }
-    //     player.css('top', newPos);
-    // }, 100);
+    gravity_interval_handle = setInterval(function() {
+        let newPos = parseInt(player.css('top'))+15;
+        // if (newPos > maxPersonPosY) {
+        //     newPos = maxPersonPosY;
+        // }
+        player.css('top', newPos);
+    }, 100);
 };
 
 function get_random_height(){
@@ -78,7 +78,7 @@ function create_present(upwards) {
                         + parseInt(player.css('left')) + "px; top:" + parseInt(player.css('top')) + "px' class='present'><img class='present' src='" 
                         + present_pic + "'>";
     $(".container").append(present_string);
-    move_presents(present_idx);
+    move_presents(present_idx, upwards);
     present_idx++;
 };
 
@@ -104,7 +104,7 @@ function move_obstacles(id){
     }
 }
 
-function move_presents(id){
+function move_presents(id, upwards){
     let xChange = 2;
     let iterationsLeft = window.innerWidth / xChange;
     let presentObj = $("#p-" + id);
@@ -151,7 +151,7 @@ function movePerson(arrow) {
         }
         case KEYS.spacebar: { // fly up once
             console.log("Spacebar!");
-            let newPos = parseInt(player.css('top'))-25;
+            let newPos = parseInt(player.css('top'))-50;
             if (newPos < 0) {
                 newPos = 0;
             }
@@ -163,23 +163,25 @@ function movePerson(arrow) {
 
 // Check if two objects are colliding
 function isColliding(o1, o2) {
-    const o1D = { 'left': o1.offset().left - PERSON_SPEED,
+    const o1D = { 'left': o1.offset().left,
           'right': o1.offset().left + o1.width(),
           'top': o1.offset().top,
           'bottom': o1.offset().top + o1.height()
         };
-    const o2D = { 'left': o2.offset().left,
-          'right': o2.offset().left + o2.width(),
-          'top': o2.offset().top,
-          'bottom': o2.offset().top + o2.height()
-        };
+    var tempImg = o2.getElementsByTagName('img')[0];
+    var itemClass = "." + tempImg.className;
+    const o2D = { 'left': parseInt(o2.style.left),
+            'right': parseInt(o2.style.left) + $(itemClass).width(),
+            'top': parseInt(o2.style.top),
+            'bottom': parseInt(o2.style.top) + $(itemClass).height()
+    };
     // Adapted from https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
     // if collision detected
     if (o1D.left < o2D.right &&
       o1D.right > o2D.left &&
       o1D.top < o2D.bottom &&
       o1D.bottom > o2D.top) {
-       return true;
+        return true;
     }
     return false;
 }
@@ -191,7 +193,18 @@ function isColliding(o1, o2) {
 // 5. present collision with icicle/ground/non-chimney -> subtract from score
 // 6. santa NON-collision with icicle/chimney -> add to score
 function checkCollisions() {
-    
+    var icicles = $('[id^="i-"]');
+    var chimneys = $('[id^="c-"]');
+    for (var i = 0; i < icicles.length; i++) {
+        if (isColliding(player, icicles[i])) {
+            console.log("Icicle");
+        }
+    }
+    // for (var i = 0; i < chimneys.length; i++) {
+    //     if (isColliding(player, chimneys[i])) {
+    //         console.log("Chimney");
+    //     }
+    // }
 }
 
 // function checkCollisionsRef() {
