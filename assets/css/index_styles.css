@@ -80,7 +80,7 @@ a {
 .backpack {
 	height: 100px;
 	float: right;
-	padding-top: -10px;
+
 	padding-left: 15px;
 }
 
@@ -128,7 +128,7 @@ a {
 	margin-bottom: 0.25rem;
 }
 
-.cost { 
-	vertical-align:middle; 
+.cost {
+	vertical-align: middle;
 	height: 30px;
 }
