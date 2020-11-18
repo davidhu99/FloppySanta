@@ -27,13 +27,13 @@ $(document).ready( function() {
 
 function start_game(){
     movement_interval_handle = setInterval(create_obstacle, GENERATE_SPEED);
-    gravity_interval_handle = setInterval(function() {
-        let newPos = parseInt(player.css('top'))+15;
-        // if (newPos > maxPersonPosY) {
-        //     newPos = maxPersonPosY;
-        // }
-        player.css('top', newPos);
-    }, 100);
+    // gravity_interval_handle = setInterval(function() {
+    //     let newPos = parseInt(player.css('top'))+15;
+    //     if (newPos > maxPersonPosY) {
+    //         newPos = maxPersonPosY;
+    //     }
+    //     player.css('top', newPos);
+    // }, 100);
 };
 
 function get_random_height(){
@@ -65,8 +65,10 @@ function create_obstacle(){
 };
 
 function create_present(upwards) {
-    let present_string = "<div id='p-" + present_idx + "' class='present'><img class='present' src='" + present_pic + "'>";
-    $(present_string).appendTo("body");
+    let present_string = "<div id='p-" + present_idx + "' style='position: absolute; left:" 
+                        + parseInt(player.css('left')) + "px; top:" + parseInt(player.css('top')) + "px' class='present'><img class='present' src='" 
+                        + present_pic + "'>";
+    $(".container").append(present_string);
     move_presents(present_idx);
     present_idx++;
 };
@@ -94,7 +96,18 @@ function move_obstacles(id){
 }
 
 function move_presents(id){
-    
+    let xChange = 2;
+    let iterationsLeft = window.innerWidth / xChange;
+    let presentObj = $("#p-" + id);
+    for (let i = 0; i < iterationsLeft; i++){
+        setTimeout(function(){ 
+            let newXPos = parseInt(presentObj.css("left")) - xChange;
+            if (newXPos < -40){
+                presentObj.remove();
+            }
+            presentObj.css('left', newXPos); 
+        }, i * 10);
+    }
 }
 
 function increase_Score(){
@@ -137,4 +150,27 @@ function movePerson(arrow) {
             break;
         }
     }
+}
+
+// Check if two objects are colliding
+function isColliding(o1, o2) {
+    const o1D = { 'left': o1.offset().left - PERSON_SPEED,
+          'right': o1.offset().left + o1.width(),
+          'top': o1.offset().top,
+          'bottom': o1.offset().top + o1.height()
+        };
+    const o2D = { 'left': o2.offset().left,
+          'right': o2.offset().left + o2.width(),
+          'top': o2.offset().top,
+          'bottom': o2.offset().top + o2.height()
+        };
+    // Adapted from https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+    // if collision detected
+    if (o1D.left < o2D.right &&
+      o1D.right > o2D.left &&
+      o1D.top < o2D.bottom &&
+      o1D.bottom > o2D.top) {
+       return true;
+    }
+    return false;
 }

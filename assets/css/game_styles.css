@@ -23,6 +23,8 @@ body {
 .present{
 	width: 40px;
 	height: auto;
+	display: inline-block;
+  	z-index: 1;
 }
 
 #score{
