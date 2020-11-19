@@ -233,9 +233,9 @@ function isColliding(o1, o2) {
     var itemClass2 = "." + tempImg2.className;
     var o2D;
     if (tempImg2.className == "chimney") {
-        o2D = { 'left': parseInt(o2.style.left) + 100,
-                'right': parseInt(o2.style.left) + 350,
-                'top': parseInt(o2.style.top) + 170,
+        o2D = { 'left': parseInt(o2.style.left),
+                'right': parseInt(o2.style.left) + $(itemClass2).width(),
+                'top': parseInt(o2.style.top) + 5,
                 'bottom': parseInt(o2.style.top) + $(itemClass2).height()
         };
     } else if (tempImg2.className == "icicle") {
