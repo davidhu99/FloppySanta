@@ -41,13 +41,13 @@ $(document).ready( function() {
 function start_game(){
     // create_obstacle();
     movement_interval_handle = setInterval(create_obstacle, GENERATE_SPEED);
-    // gravity_interval_handle = setInterval(function() {
-    //     let newPos = parseInt(player.css('top'))+15;
-    //     // if (newPos > maxPersonPosY) {
-    //     //     newPos = maxPersonPosY;
-    //     // }
-    //     player.css('top', newPos);
-    // }, 100);
+    gravity_interval_handle = setInterval(function() {
+        let newPos = parseInt(player.css('top'))+15;
+        // if (newPos > maxPersonPosY) {
+        //     newPos = maxPersonPosY;
+        // }
+        player.css('top', newPos);
+    }, 100);
 };
 
 function get_random_height(){
@@ -141,7 +141,7 @@ function increase_Score(){
 function keydownRouter(e) {
     switch (e.which) {
         case KEYS.spacebar:
-        case KEYS.up:
+        // case KEYS.up:
         case KEYS.down:
             movePerson(e.which);
             break;
@@ -153,11 +153,11 @@ function keydownRouter(e) {
 // Handle player movement events
 function movePerson(arrow) {
     switch (arrow) {
-        case KEYS.up: { // throw present up
-            console.log("Up!");
-            create_present(true);
-            break;
-        }
+        // case KEYS.up: { // throw present up
+        //     console.log("Up!");
+        //     create_present(true);
+        //     break;
+        // }
         case KEYS.down: { // throw present down
             console.log("Down!");
             create_present(false);
@@ -176,6 +176,7 @@ function movePerson(arrow) {
 }
 
 // Check if two objects are colliding
+// CURRENTLY SET FOR CHIMNEY SIDE
 function isCollidingPlayer(o1, o2) {
     const o1D = { 'left': o1.offset().left,
           'right': o1.offset().left + o1.width(),
@@ -184,9 +185,10 @@ function isCollidingPlayer(o1, o2) {
         };
     var tempImg = o2.getElementsByTagName('img')[0];
     var itemClass = "." + tempImg.className;
-    const o2D = { 'left': parseInt(o2.style.left),
-            'right': parseInt(o2.style.left) + $(itemClass).width(),
-            'top': parseInt(o2.style.top),
+    const o2D = { 'left': parseInt(o2.style.left) + 270,
+            // 'right': parseInt(o2.style.left) + $(itemClass).width(),
+            'right': parseInt(o2.style.left) + 350,
+            'top': parseInt(o2.style.top) + 235,
             'bottom': parseInt(o2.style.top) + $(itemClass).height()
     };
     // Adapted from https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
@@ -233,8 +235,9 @@ function checkCollisions() {
     var icicles = $('[id^="i-"]');
     for (var i = 0; i < icicles.length; i++) {
         if (isCollidingPlayer(player, icicles[i])) {
-            console.log("Icicle hit");
+            // console.log("Icicle hit");
             // game over state
+            // alert("Game over");
         }
     }
 
@@ -244,6 +247,7 @@ function checkCollisions() {
         if (isCollidingPlayer(player, chimneys[i])) {
             console.log("Chimney hit");
             // game over state
+            alert("Game over");
         }
     }
 
@@ -251,7 +255,7 @@ function checkCollisions() {
     var coins = $('[id^="co-"]');
     for (var i = 0; i < coins.length; i++) {
         if (isCollidingPlayer(player, coins[i])) {
-            console.log("Coin hit");
+            // console.log("Coin hit");
             // add to coin count
         }
     }
