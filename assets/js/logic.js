@@ -1,5 +1,5 @@
 const GENERATE_SPEED = 3000;
-const OBSTACLE_HEIGHT = 400;
+// const OBSTACLE_HEIGHT = ;
 const OBSTACLE_GAP = 150;
 const KEYS = {
     up: 38,
@@ -7,7 +7,8 @@ const KEYS = {
     spacebar: 32
 };
 
-let start_x = window.innerWidth - 80;
+let game_window;
+let start_x;
 let chimney_pic = "../../images/chimney.svg";
 let icicle_pic = "../../images/icicle.svg";
 let coin_pic = "../../images/coin.svg";
@@ -19,6 +20,9 @@ let present_idx = 0;
 let player;
 
 $(document).ready( function() {
+    game_window = $(".container");
+    start_x = parseInt(game_window.css("left")) + 300;
+    // start_x = 100;
     // set the global player handle
     player = $('#player');
 
@@ -35,6 +39,7 @@ $(document).ready( function() {
 });
 
 function start_game(){
+    // create_obstacle();
     movement_interval_handle = setInterval(create_obstacle, GENERATE_SPEED);
     gravity_interval_handle = setInterval(function() {
         let newPos = parseInt(player.css('top'))+15;
@@ -47,28 +52,31 @@ function start_game(){
 
 function get_random_height(){
     // return (Math.random() * (max - min)) + min;
-    let max = window.innerHeight - (OBSTACLE_HEIGHT + 200);
-    let min = 200 - OBSTACLE_HEIGHT; // negative
+    let max = -10;
+    let min = -350;
     return (Math.random() * (max - min)) + min;
 }
 
 function create_obstacle(){
     let top_height = get_random_height();
-    let bottom_height = top_height + OBSTACLE_HEIGHT + OBSTACLE_GAP; 
-    let middle_height = top_height + OBSTACLE_HEIGHT + (OBSTACLE_GAP / 2) - 30; // 30 is half of coin size
+    let bottom_height = top_height + 400; 
+    let middle_height = top_height + 450; // 30 is half of coin size
+    // let top_height = 0;
+    // let bottom_height = 0;
+    // let middle_height = 0;
 
     let icicle_string = "<div id='i-" + obstacle_idx + "' style='position: absolute; left:" 
-                        + start_x + "px; top:" + top_height + "px' class='icicle'><img class='icicle' src='" 
+                        + (start_x + 10 )+ "px; top:" + top_height + "px' class='icicle'><img class='icicle' src='" 
                         + icicle_pic + "'>";
     let coin_string = "<div id='co-" + obstacle_idx + "' style='position: absolute; left:" 
-                        + (start_x + 10) + "px; top:" + middle_height + "px' class='coin'><img class='coin' src='" 
+                        + (start_x + 115) + "px; top:" + middle_height + "px' class='coin'><img class='coin' src='" 
                         + coin_pic + "'>";
     let chimney_string = "<div id='c-" + obstacle_idx + "' style='position: absolute; left:" 
                         + start_x + "px; top:" + bottom_height + "px' class='chimney'><img class='chimney' src='" 
                         + chimney_pic + "'>";
-    $(icicle_string).appendTo("body");
-    $(coin_string).appendTo("body");
-    $(chimney_string).appendTo("body");
+    $(icicle_string).appendTo(".container");
+    $(coin_string).appendTo(".container");
+    $(chimney_string).appendTo(".container");
     move_obstacles(obstacle_idx);
     obstacle_idx++;
 };
@@ -96,8 +104,8 @@ function move_obstacles(id){
                 coinObj.remove();
                 chimneyObj.remove();
             }
-            icicleObj.css('left', newXPos); 
-            coinObj.css('left', newXPos + 10); 
+            icicleObj.css('left', newXPos + 10); 
+            coinObj.css('left', newXPos + 115); 
             chimneyObj.css('left', newXPos); 
             // console.log("moving item");
         }, i * 10);
