@@ -18,13 +18,17 @@ let gravity_interval_handle;
 let obstacle_idx = 0;
 let present_idx = 0;
 let player;
+let scoreCounter;
+let coinsCounter;
 
 $(document).ready( function() {
     game_window = $(".container");
     start_x = parseInt(game_window.css("left")) + 300;
     // start_x = 100;
-    // set the global player handle
+    
     player = $('#player');
+    scoreCounter = $('#scoreCounter');
+    coinsCounter = $('#coinsCounter');
 
     // user keyboard input
     $(window).keydown(keydownRouter);
@@ -41,6 +45,7 @@ $(document).ready( function() {
 function start_game(){
     // create_obstacle();
     movement_interval_handle = setInterval(create_obstacle, GENERATE_SPEED);
+
     gravity_interval_handle = setInterval(function() {
         let newPos = parseInt(player.css('top'))+15;
         // if (newPos > maxPersonPosY) {
@@ -176,7 +181,6 @@ function movePerson(arrow) {
 }
 
 // Check if two objects are colliding
-// CURRENTLY SET FOR CHIMNEY SIDE
 function isCollidingPlayer(o1, o2) {
     const o1D = { 'left': o1.offset().left,
           'right': o1.offset().left + o1.width(),
@@ -185,12 +189,27 @@ function isCollidingPlayer(o1, o2) {
         };
     var tempImg = o2.getElementsByTagName('img')[0];
     var itemClass = "." + tempImg.className;
-    const o2D = { 'left': parseInt(o2.style.left) + 270,
-            // 'right': parseInt(o2.style.left) + $(itemClass).width(),
-            'right': parseInt(o2.style.left) + 350,
-            'top': parseInt(o2.style.top) + 235,
-            'bottom': parseInt(o2.style.top) + $(itemClass).height()
-    };
+    var o2D;
+    if (tempImg.className == "chimney") {
+        o2D = { 'left': parseInt(o2.style.left) + 270,
+                'right': parseInt(o2.style.left) + 350,
+                'top': parseInt(o2.style.top) + 235,
+                'bottom': parseInt(o2.style.top) + $(itemClass).height()
+        };
+    } else if (tempImg.className == "icicle") {
+        o2D = { 'left': parseInt(o2.style.left),
+                'right': parseInt(o2.style.left) + $(itemClass).width(),
+                'top': parseInt(o2.style.top),
+                'bottom': parseInt(o2.style.top) + $(itemClass).height()
+        };
+    }
+    else { // coin
+        o2D = { 'left': parseInt(o2.style.left) + 200,
+                'right': parseInt(o2.style.left) + 300,
+                'top': parseInt(o2.style.top) + 70,
+                'bottom': parseInt(o2.style.top) + $(itemClass).height()
+        };
+    }
     // Adapted from https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
     // if collision detected
     if (o1D.left < o2D.right &&
@@ -255,12 +274,15 @@ function checkCollisions() {
     var coins = $('[id^="co-"]');
     for (var i = 0; i < coins.length; i++) {
         if (isCollidingPlayer(player, coins[i])) {
-            // console.log("Coin hit");
+            console.log("Coin hit");
             // add to coin count
+            coinsCounter[0].innerHTML = String(parseInt(coinsCounter[0].innerHTML) + 1);
+            var id = "#" + coins[i].id;
+            $(id).remove();
         }
     }
 
-    // 4. Santa collision with ground -> game over
+    // 4. Santa collision with window bottom edge -> game over
     
 
     var presents = $('[id^="p-"]');
@@ -272,7 +294,7 @@ function checkCollisions() {
                 // add to score
             }
         }
-        // 6. Present collision with icicle/ground/non-chimney -> subtract from score
+        // 6. Present collision with icicle -> subtract from score
         for (var j = 0; j < icicles.length; j++) {
             if (isColliding(presents[i], icicles[j])) {
                 console.log("Present hit icicle");

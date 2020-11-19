@@ -35,6 +35,14 @@ body {
 	z-index: 3;
 }
 
+#coins{
+    font-weight: bold;
+    font-size: 30px;
+    position: relative;
+	margin-left: 80%;
+	z-index: 3;
+}
+
 #player{
 	top: 50%;
 	left: 20%;
