@@ -15,6 +15,7 @@ let coin_pic = "../../images/coin.png";
 let present_pic = "../../images/present_temp.svg";
 let movement_interval_handle;
 let gravity_interval_handle;
+let collision_interval_handle;
 let obstacle_idx = 0;
 let present_idx = 0;
 let player;
@@ -24,7 +25,7 @@ let coinsCounter;
 $(document).ready( function() {
     game_window = $(".container");
     start_x = parseInt(game_window.css("left")) + 300;
-    // start_x = 100;
+    // start_x = 300;
     
     player = $('#player');
     scoreCounter = $('#scoreCounter');
@@ -33,17 +34,12 @@ $(document).ready( function() {
     // user keyboard input
     $(window).keydown(keydownRouter);
 
-    // periodically check for collisions
-    setInterval(function() {
-        checkCollisions();
-    }, 25);
-
     console.log("begin game")
     start_game();
 });
 
 function start_game(){
-    // create_obstacle();
+    create_obstacle();
     movement_interval_handle = setInterval(create_obstacle, GENERATE_SPEED);
 
     gravity_interval_handle = setInterval(function() {
@@ -53,28 +49,33 @@ function start_game(){
         // }
         player.css('top', newPos);
     }, 100);
+
+    // periodically check for collisions
+    collision_interval_handle = setInterval(function() {
+        checkCollisions();
+    }, 25);
 };
 
 function get_random_height(){
     // return (Math.random() * (max - min)) + min;
-    let max = -10;
-    let min = -350;
+    let max = 0;
+    let min = -250;
     return (Math.random() * (max - min)) + min;
 }
 
 function create_obstacle(){
     let top_height = get_random_height();
-    let bottom_height = top_height + 400; 
+    let bottom_height = top_height + 550; 
     let middle_height = top_height + 450; // 30 is half of coin size
     // let top_height = 0;
     // let bottom_height = 0;
     // let middle_height = 0;
 
     let icicle_string = "<div id='i-" + obstacle_idx + "' style='position: absolute; left:" 
-                        + (start_x + 10 )+ "px; top:" + top_height + "px' class='icicle'><img class='icicle' src='" 
+                        + start_x + "px; top:" + top_height + "px' class='icicle'><img class='icicle' src='" 
                         + icicle_pic + "'>";
     let coin_string = "<div id='co-" + obstacle_idx + "' style='position: absolute; left:" 
-                        + (start_x + 115) + "px; top:" + middle_height + "px' class='coin'><img class='coin' src='" 
+                        + (start_x + 30) + "px; top:" + middle_height + "px' class='coin'><img class='coin' src='" 
                         + coin_pic + "'>";
     let chimney_string = "<div id='c-" + obstacle_idx + "' style='position: absolute; left:" 
                         + start_x + "px; top:" + bottom_height + "px' class='chimney'><img class='chimney' src='" 
@@ -109,8 +110,8 @@ function move_obstacles(id){
                 coinObj.remove();
                 chimneyObj.remove();
             }
-            icicleObj.css('left', newXPos + 10); 
-            coinObj.css('left', newXPos + 115); 
+            icicleObj.css('left', newXPos); 
+            coinObj.css('left', newXPos + 30); 
             chimneyObj.css('left', newXPos); 
             // console.log("moving item");
         }, i * 10);
@@ -119,7 +120,7 @@ function move_obstacles(id){
 
 function move_presents(id, upwards){
     let xChange = 2;
-    let yChange = 5;
+    let yChange = 3;
     let iterationsLeft = Math.max(window.innerWidth / xChange, window.innerHeight / yChange);
     let presentObj = $("#p-" + id);
     for (let i = 0; i < iterationsLeft; i++){
@@ -136,11 +137,6 @@ function move_presents(id, upwards){
             presentObj.css('top', newYPos); 
         }, i * 10);
     }
-}
-
-function increase_Score(){
-    let score = parseInt($("#score").text().slice(7)) + 1;
-    $("#score").text("Score: " + score);
 }
 
 function keydownRouter(e) {
@@ -272,7 +268,7 @@ function checkCollisions() {
         if (isCollidingPlayer(player, icicles[i])) {
             // console.log("Icicle hit");
             // game over state
-            // alert("Game over");
+            // game_over();
         }
     }
 
@@ -282,7 +278,7 @@ function checkCollisions() {
         if (isCollidingPlayer(player, chimneys[i])) {
             console.log("Chimney hit");
             // game over state
-            alert("Game over");
+            game_over();
         }
     }
 
@@ -301,7 +297,7 @@ function checkCollisions() {
     // 4. Santa collision with window bottom edge -> game over
     if (parseInt(player.css('top')) > 504) {
         // game over state
-        alert("Game over");
+        game_over();
     }
 
     var presents = $('[id^="p-"]');
@@ -325,4 +321,14 @@ function checkCollisions() {
         }
         // 7. Present collision with window edge -> subtract from score
     }
+}
+
+function game_over(){
+    clearInterval(movement_interval_handle);
+    clearInterval(gravity_interval_handle);
+    clearInterval(collision_interval_handle)
+    console.log("game_over");
+    $(".end_container").css("display", "");
+    $("#endScoreCounter").text(parseInt($("#scoreCounter").text()));
+    
 }
