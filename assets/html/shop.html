@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="../css/index_styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class = shop>
+    <script src="../js/shoplogic.js"></script>
+
     <div class="shopWindow">
         
         
@@ -20,7 +23,12 @@
                 <img class='backpack' src="../../images/temp/backpack.png" alt="">
             </a>
             <img class="currChar" src="../../images/santa.svg" alt="">
-            <button>PURCHASE</button>
+            <button class="purchaseButton">PURCHASE</button>
+             <div class="purchaseConfirmBox">
+                <p>Are you sure you want to purchase?</p>
+                <button class="purchaseOption yes">Yes</button>
+                <button class="purchaseOption no">No</button>
+             </div> 
         </div>
 
         <div class="market">
@@ -35,7 +43,7 @@
             <div class="items">
                 <div class="row">
                     <div class="col-sm">
-                        <p id='itemName'>Rudolph</p>
+                        <p class='itemName'>Rudolph</p>
                         <img src="../../images/temp/reindeer.png" alt="" class="item">
                         <p id="itemName">
                             <div> 
@@ -45,7 +53,7 @@
                         </p>
                     </div>
                     <div class="col-sm">
-                        <p id='itemName'>Blitzen</p>
+                        <p class='itemName'>Blitzen</p>
                         <img src="../../images/temp/reindeer.png" alt="" class="item">
                         <p id="itemName">
                             <div> 
@@ -55,7 +63,7 @@
                         </p>
                     </div>
                     <div class="col-sm">
-                        <p id='itemName'>Comet</p>
+                        <p class='itemName'>Comet</p>
                         <img src="../../images/temp/reindeer.png" alt="" class="item">
                         <p id="itemName">
                             <div> 

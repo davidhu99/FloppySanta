@@ -123,7 +123,7 @@ a {
 	margin-bottom: 0.5rem;
 }
 
-#itemName {
+.itemName {
 	font-size: 1rem;
 	margin-bottom: 0.25rem;
 }
@@ -131,4 +131,30 @@ a {
 .cost { 
 	vertical-align:middle; 
 	height: 30px;
+}
+
+.purchaseButton {
+	/* padding-top: 40px; */
+	margin-top: 30px;
+	height: 40px;
+	width: 100px;
+}
+
+.purchaseButton:hover {
+	opacity: 70%;
+}
+.purchaseConfirmBox {
+	background-color: white;
+	padding: 20px;
+	width: 80%;
+	text-align: center;
+	margin-top: 20px;
+	border: black 1px solid;
+	display: none;
+	/* display: inline-block; */
+}
+
+.purchaseOption {
+	margin-left: 20px;
+	margin-right: 20px;
 }
