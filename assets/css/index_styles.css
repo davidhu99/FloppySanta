@@ -9,7 +9,7 @@ body {
 .container {
 	background: #f8dccd;
 	height: 82vh;
-	width: 67vw;
+	width: 68vw;
 	text-align: center;
 	position: absolute;
 	top: 50%;
@@ -80,7 +80,7 @@ a {
 .backpack {
 	height: 100px;
 	float: right;
-	padding-top: -10px;
+
 	padding-left: 15px;
 }
 
@@ -128,8 +128,8 @@ a {
 	margin-bottom: 0.25rem;
 }
 
-.cost { 
-	vertical-align:middle; 
+.cost {
+	vertical-align: middle;
 	height: 30px;
 }
 

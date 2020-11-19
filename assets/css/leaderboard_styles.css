@@ -1,22 +1,3 @@
-.submit {
-	text-align: center;
-}
-
-.invalid {
-	background-color: red;
-	overflow: hidden;
-}
-
-.leaderboard {
-	text-align: center;
-	font-size: 30px;
-}
-
-ol {
-	display: table;
-	margin: 0 auto;
-}
-
 .leaderboard {
 	background: #f8dccd;
 	height: 82vh;
@@ -39,4 +20,11 @@ body {
 ol {
 	display: table;
 	margin: 0 auto;
+}
+
+.back {
+	height: 60px;
+	float: left;
+	padding-top: 10px;
+	padding-left: 15px;
 }
