@@ -170,7 +170,7 @@ function movePerson(arrow) {
 }
 
 // Check if two objects are colliding
-function isColliding(o1, o2) {
+function isCollidingPlayer(o1, o2) {
     const o1D = { 'left': o1.offset().left,
           'right': o1.offset().left + o1.width(),
           'top': o1.offset().top,
@@ -194,96 +194,81 @@ function isColliding(o1, o2) {
     return false;
 }
 
-// 1. santa collision with icicle/chimney -> game over
-// 2. santa collision with coin -> add to coin count
-// 3. santa collision with ground -> game over
-// 4. present collision with chimney -> add to score
-// 5. present collision with icicle/ground/non-chimney -> subtract from score
-// 6. santa NON-collision with icicle/chimney -> add to score
-function checkCollisions() {
-    var icicles = $('[id^="i-"]');
-    var chimneys = $('[id^="c-"]');
-    for (var i = 0; i < icicles.length; i++) {
-        if (isColliding(player, icicles[i])) {
-            console.log("Icicle");
-        }
+// Check if two objects are colliding
+function isColliding(o1, o2) {
+    var tempImg1 = o1.getElementsByTagName('img')[0];
+    var itemClass1 = "." + tempImg1.className;
+    const o1D = { 'left': parseInt(o1.style.left),
+          'right': parseInt(o1.style.left) + $(itemClass1).width(),
+          'top': parseInt(o1.style.top),
+          'bottom': parseInt(o1.style.top) + $(itemClass1).height()
+    };
+    var tempImg2 = o2.getElementsByTagName('img')[0];
+    var itemClass2 = "." + tempImg2.className;
+    const o2D = { 'left': parseInt(o2.style.left),
+            'right': parseInt(o2.style.left) + $(itemClass2).width(),
+            'top': parseInt(o2.style.top),
+            'bottom': parseInt(o2.style.top) + $(itemClass2).height()
+    };
+    // Adapted from https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+    // if collision detected
+    if (o1D.left < o2D.right &&
+      o1D.right > o2D.left &&
+      o1D.top < o2D.bottom &&
+      o1D.bottom > o2D.top) {
+        return true;
     }
-    // for (var i = 0; i < chimneys.length; i++) {
-    //     if (isColliding(player, chimneys[i])) {
-    //         console.log("Chimney");
-    //     }
-    // }
+    return false;
 }
 
-// function checkCollisionsRef() {
-//     if (isColliding(player, paradeFloat2) || wouldCollideLeft()) {
-//       // console.log("front");
-//       paradeFloat2.stop();
-//       paradeFloat1.stop();
-//     }
-//     var items = $('[id^="i-"]');
-//     for (var i = 0; i < items.length; i++) {
-//         if (isTouchingItem(items[i]) && items[i].style.backgroundColor != "yellow") {
-//             items[i].style.border = "2px solid yellow";
-//             items[i].style.backgroundColor = "yellow";
-//             items[i].style.borderRadius = "100%";
-//             var id = "#" + items[i].id;
-//             setTimeout(function() {
-//                 $(id).fadeTo(1000, 0, function() {
-//                     $(id).remove();
-//                 })
-//             }, 0);
-//             $(id).fadeTo(1000, 0, function() {
-//                 $(id).remove();
-//             });
-//             var itemClass = items[i].getElementsByTagName('img')[0].className;
-//             if (itemClass == "throwingItemBeads") {
-//                 beadsCounter[0].innerHTML = String(parseInt(beadsCounter[0].innerHTML) + 1);
-//                 gwhScore[0].innerHTML = String(parseInt(gwhScore[0].innerHTML) + 100);
-//                 chimeAudio.pause();
-//                 chimeAudio.currentTime = 0;
-//                 dingAudio.pause();
-//                 dingAudio.currentTime = 0;
-//                 obstacleAudio.pause();
-//                 obstacleAudio.currentTime = 0;
-//                 damageAudio.pause();
-//                 damageAudio.currentTime = 0;
-//                 var nopromise = {
-//                     catch : new Function()
-//                 };
-//                 (chimeAudio.play() || nopromise).catch(function(){});
-//             } else if (itemClass == "throwingItemCandy") {
-//                 candyCounter[0].innerHTML = String(parseInt(candyCounter[0].innerHTML) + 1);
-//                 gwhScore[0].innerHTML = String(parseInt(gwhScore[0].innerHTML) + 100);
-//                 chimeAudio.pause();
-//                 chimeAudio.currentTime = 0;
-//                 dingAudio.pause();
-//                 dingAudio.currentTime = 0;
-//                 obstacleAudio.pause();
-//                 obstacleAudio.currentTime = 0;
-//                 damageAudio.pause();
-//                 damageAudio.currentTime = 0;
-//                 var nopromise = {
-//                     catch : new Function()
-//                 };
-//                 (dingAudio.play() || nopromise).catch(function(){});
-//             } else {
-//                 gwhScore[0].innerHTML = String(0);
-//                 beadsCounter[0].innerHTML = String(0);
-//                 candyCounter[0].innerHTML = String(0);
-//                 chimeAudio.pause();
-//                 chimeAudio.currentTime = 0;
-//                 dingAudio.pause();
-//                 dingAudio.currentTime = 0;
-//                 obstacleAudio.pause();
-//                 obstacleAudio.currentTime = 0;
-//                 damageAudio.pause();
-//                 damageAudio.currentTime = 0;
-//                 var nopromise = {
-//                     catch : new Function()
-//                 };
-//                 (damageAudio.play() || nopromise).catch(function(){});
-//             }
-//         }
-//     }
-// }
+// Also Santa NON-collision with icicle/chimney -> add to score
+function checkCollisions() {
+    // 1. Santa collision with icicle -> game over
+    var icicles = $('[id^="i-"]');
+    for (var i = 0; i < icicles.length; i++) {
+        if (isCollidingPlayer(player, icicles[i])) {
+            console.log("Icicle hit");
+            // game over state
+        }
+    }
+
+    // 2. Santa collision with chimney -> game over
+    var chimneys = $('[id^="c-"]');
+    for (var i = 0; i < chimneys.length; i++) {
+        if (isCollidingPlayer(player, chimneys[i])) {
+            console.log("Chimney hit");
+            // game over state
+        }
+    }
+
+    // 3. Santa collision with coin -> add to coin count
+    var coins = $('[id^="co-"]');
+    for (var i = 0; i < coins.length; i++) {
+        if (isCollidingPlayer(player, coins[i])) {
+            console.log("Coin hit");
+            // add to coin count
+        }
+    }
+
+    // 4. Santa collision with ground -> game over
+    
+
+    var presents = $('[id^="p-"]');
+    for (var i = 0; i < presents.length; i++) {
+        // 5. Present collision with chimney -> add to score
+        for (var j = 0; j < chimneys.length; j++) {
+            if (isColliding(presents[i], chimneys[j])) {
+                console.log("Present hit chimney");
+                // add to score
+            }
+        }
+        // 6. Present collision with icicle/ground/non-chimney -> subtract from score
+        for (var j = 0; j < icicles.length; j++) {
+            if (isColliding(presents[i], icicles[j])) {
+                console.log("Present hit icicle");
+                // subtract from score
+            }
+        }
+        // 7. Present collision with window edge -> subtract from score
+    }
+}
