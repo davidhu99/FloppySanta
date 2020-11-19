@@ -41,13 +41,13 @@ $(document).ready( function() {
 function start_game(){
     // create_obstacle();
     movement_interval_handle = setInterval(create_obstacle, GENERATE_SPEED);
-    gravity_interval_handle = setInterval(function() {
-        let newPos = parseInt(player.css('top'))+15;
-        // if (newPos > maxPersonPosY) {
-        //     newPos = maxPersonPosY;
-        // }
-        player.css('top', newPos);
-    }, 100);
+    // gravity_interval_handle = setInterval(function() {
+    //     let newPos = parseInt(player.css('top'))+15;
+    //     // if (newPos > maxPersonPosY) {
+    //     //     newPos = maxPersonPosY;
+    //     // }
+    //     player.css('top', newPos);
+    // }, 100);
 };
 
 function get_random_height(){
@@ -114,7 +114,8 @@ function move_obstacles(id){
 
 function move_presents(id, upwards){
     let xChange = 2;
-    let iterationsLeft = window.innerWidth / xChange;
+    let yChange = 5;
+    let iterationsLeft = Math.max(window.innerWidth / xChange, window.innerHeight / yChange);
     let presentObj = $("#p-" + id);
     for (let i = 0; i < iterationsLeft; i++){
         setTimeout(function(){ 
@@ -123,6 +124,11 @@ function move_presents(id, upwards){
                 presentObj.remove();
             }
             presentObj.css('left', newXPos); 
+            let newYPos = parseInt(presentObj.css("top")) + yChange;
+            if (newYPos > 560){
+                presentObj.remove();
+            }
+            presentObj.css('top', newYPos); 
         }, i * 10);
     }
 }
