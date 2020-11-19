@@ -124,17 +124,25 @@ function move_presents(id, upwards){
     let yChange = 3;
     let iterationsLeft = Math.max(window.innerWidth / xChange, window.innerHeight / yChange);
     let presentObj = $("#p-" + id);
+    var decremented = false; 
     for (let i = 0; i < iterationsLeft; i++){
         setTimeout(function(){ 
             let newXPos = parseInt(presentObj.css("left")) - xChange;
             if (newXPos < -40){
                 presentObj.remove();
+                if (!decremented){
+                    scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
+                    decremented = true;
+                }
             }
             presentObj.css('left', newXPos); 
             let newYPos = parseInt(presentObj.css("top")) + yChange;
             if (newYPos > 560){
                 presentObj.remove();
-                // scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
+                if (!decremented){
+                    scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
+                    decremented = true;
+                }
             }
             presentObj.css('top', newYPos); 
         }, i * 10);
