@@ -134,6 +134,7 @@ function move_presents(id, upwards){
             let newYPos = parseInt(presentObj.css("top")) + yChange;
             if (newYPos > 560){
                 presentObj.remove();
+                // scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
             }
             presentObj.css('top', newYPos); 
         }, i * 10);
@@ -188,12 +189,13 @@ function isCollidingPlayer(o1, o2) {
     var itemClass = "." + tempImg.className;
     var o2D;
     if (tempImg.className == "chimney") {
-        o2D = { 'left': parseInt(o2.style.left) + 335,
-                'right': parseInt(o2.style.left) + 400,
-                'top': parseInt(o2.style.top) + 235,
-                'bottom': parseInt(o2.style.top) + $(itemClass).height()
+        o2D = { 'left': parseInt(o2.style.left) + 230,
+                'right': parseInt(o2.style.left) + 300,
+                'top': parseInt(o2.style.top) + 80,
+                'bottom': parseInt(o2.style.top) + 180
         };
-    } else if (tempImg.className == "icicle") {
+    }
+    else if (tempImg.className == "icicle") {
         o2D = { 'left': parseInt(o2.style.left),
                 'right': parseInt(o2.style.left) + $(itemClass).width(),
                 'top': parseInt(o2.style.top),
@@ -296,20 +298,20 @@ function checkCollisions() {
     }
 
     // 4. Santa collision with window bottom edge -> game over
-    if (parseInt(player.css('top')) > 504) {
+    if (parseInt(player.css('top')) > 518) {
         // game over state
         game_over();
     }
 
     var presents = $('[id^="p-"]');
     for (var i = 0; i < presents.length; i++) {
+        var id = "#" + presents[i].id;
         // 5. Present collision with chimney -> add to score
         for (var j = 0; j < chimneys.length; j++) {
             if (isColliding(presents[i], chimneys[j])) {
                 console.log("Present hit chimney");
                 // add to score
                 scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) + 1);
-                var id = "#" + presents[i].id;
                 $(id).remove();
             }
         }
@@ -321,6 +323,12 @@ function checkCollisions() {
             }
         }
         // 7. Present collision with window edge -> subtract from score
+        // if () {
+        //     console.log("Present didn't hit anything");
+        //     // subtract from score
+            // scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
+        //     $(id).remove
+        // }
     }
 }
 
