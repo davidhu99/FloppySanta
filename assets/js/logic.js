@@ -9,9 +9,9 @@ const KEYS = {
 
 let game_window;
 let start_x;
-let chimney_pic = "../../images/chimney.svg";
-let icicle_pic = "../../images/icicle.svg";
-let coin_pic = "../../images/coin.svg";
+let chimney_pic = "../../images/chimney.png";
+let icicle_pic = "../../images/icicle.png";
+let coin_pic = "../../images/coin.png";
 let present_pic = "../../images/present_temp.svg";
 let movement_interval_handle;
 let gravity_interval_handle;
