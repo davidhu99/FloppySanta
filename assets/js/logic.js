@@ -12,7 +12,7 @@ let start_x;
 let chimney_pic = "../../images/chimney.png";
 let icicle_pic = "../../images/icicle.png";
 let coin_pic = "../../images/coin.png";
-let present_pic = "../../images/present_temp.svg";
+let present_pic = "../../images/present.png";
 let movement_interval_handle;
 let gravity_interval_handle;
 let obstacle_idx = 0;
