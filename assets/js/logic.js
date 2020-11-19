@@ -30,6 +30,7 @@ $(document).ready( function() {
     player = $('#player');
     scoreCounter = $('#scoreCounter');
     coinsCounter = $('#coinsCounter');
+    coinsCounter.text(localStorage.getItem("coins"));
 
     // user keyboard input
     $(window).keydown(keydownRouter);
@@ -288,7 +289,7 @@ function checkCollisions() {
         if (isCollidingPlayer(player, coins[i])) {
             console.log("Coin hit");
             // add to coin count
-            coinsCounter[0].innerHTML = String(parseInt(coinsCounter[0].innerHTML) + 1);
+            coinsCounter.text(parseInt(coinsCounter.text())+1);
             var id = "#" + coins[i].id;
             $(id).remove();
         }
@@ -330,5 +331,7 @@ function game_over(){
     console.log("game_over");
     $(".end_container").css("display", "");
     $("#endScoreCounter").text(parseInt($("#scoreCounter").text()));
+
+    localStorage.setItem("coins", $("#coinsCounter").text());
     
 }
