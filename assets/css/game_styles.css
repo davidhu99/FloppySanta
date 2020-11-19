@@ -11,7 +11,7 @@ body {
 }
 
 .icicle {
-	width: 100px;
+	width: 195px;
 	/* height: 1000px; */
 }
 
@@ -33,6 +33,11 @@ body {
     position: relative;
 	margin-left: 80%;
 	z-index: 3;
+}
+
+#endScore{
+	font-weight: bold;
+    font-size: 40px;
 }
 
 #coins{
