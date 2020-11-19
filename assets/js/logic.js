@@ -191,8 +191,8 @@ function isCollidingPlayer(o1, o2) {
     var itemClass = "." + tempImg.className;
     var o2D;
     if (tempImg.className == "chimney") {
-        o2D = { 'left': parseInt(o2.style.left) + 270,
-                'right': parseInt(o2.style.left) + 350,
+        o2D = { 'left': parseInt(o2.style.left) + 335,
+                'right': parseInt(o2.style.left) + 400,
                 'top': parseInt(o2.style.top) + 235,
                 'bottom': parseInt(o2.style.top) + $(itemClass).height()
         };
@@ -204,8 +204,8 @@ function isCollidingPlayer(o1, o2) {
         };
     }
     else { // coin
-        o2D = { 'left': parseInt(o2.style.left) + 200,
-                'right': parseInt(o2.style.left) + 300,
+        o2D = { 'left': parseInt(o2.style.left) + 265,
+                'right': parseInt(o2.style.left) + 365,
                 'top': parseInt(o2.style.top) + 70,
                 'bottom': parseInt(o2.style.top) + $(itemClass).height()
         };
