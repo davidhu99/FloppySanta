@@ -24,6 +24,14 @@ body {
 	font-family: 'Mountains of Christmas', cursive;
 }
 
+.errorPurchase {
+	font-weight: bold;
+	color: red;
+	font-size: larger;
+	margin-top: 5%;
+	display: none;
+}
+
 .shopWindow {
 	background-color: #d1d6cf;
 	margin-top: 0;
@@ -92,9 +100,11 @@ a {
 }
 
 .currChar {
+	margin-left: 5%;
 	padding-top: 10%;
 	/* padding-left: 10%; */
 	height: 50%;
+	width: 80%;
 	display: inline-block;
 }
 
@@ -137,7 +147,8 @@ a {
 	/* padding-top: 40px; */
 	margin-top: 30px;
 	height: 40px;
-	width: 100px;
+	width: 20%;
+	display: none;
 }
 
 .purchaseButton:hover {
@@ -157,4 +168,17 @@ a {
 .purchaseOption {
 	margin-left: 20px;
 	margin-right: 20px;
+}
+
+.col-sm:hover {
+	cursor: pointer;
+}
+
+.close {
+	/* display: none; */
+	margin-right: 5%;
+}
+
+.close p {
+	font-size: 50px;
 }

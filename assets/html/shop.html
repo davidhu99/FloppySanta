@@ -22,19 +22,27 @@
             <a href="../html/inventory.html">
                 <img class='backpack' src="../../images/temp/backpack.png" alt="">
             </a>
-            <img class="currChar" src="../../images/santa.svg" alt="">
+            <img class="currChar" src="" alt=""> 
+            <button class=close>
+                <p>
+                    &times
+                </p>
+            </button>
             <button class="purchaseButton">PURCHASE</button>
              <div class="purchaseConfirmBox">
                 <p>Are you sure you want to purchase?</p>
                 <button class="purchaseOption yes">Yes</button>
                 <button class="purchaseOption no">No</button>
              </div> 
+
+             <p class=errorPurchase>You can't make this purchase :( </p>
         </div>
 
         <div class="market">
             <div class="currCoins"> 
-                10
-                <img style="vertical-align:middle; height: 40px;" src="../../images/coin.svg">
+                <span class="numCoins">10</span>
+                
+            <img style="vertical-align:middle; height: 40px;" src="../../images/coin.svg">
             </div>
             <p class='h'>
                 SHOP
@@ -46,27 +54,28 @@
                         <p class='itemName'>Rudolph</p>
                         <img src="../../images/temp/reindeer.png" alt="" class="item">
                         <p id="itemName">
-                            <div> 
+                            <div class="itemCost"> 
                                 5
-                                <img class="cost" src="../../images/coin.svg">
+                            <img class="cost" src="../../images/coin.svg">
                             </div>
                         </p>
                     </div>
+
                     <div class="col-sm">
-                        <p class='itemName'>Blitzen</p>
-                        <img src="../../images/temp/reindeer.png" alt="" class="item">
+                        <p class='itemName'>Elf</p>
+                        <img src="../../images/temp/elf.png" alt="" class="item">
                         <p id="itemName">
-                            <div> 
+                            <div class="itemCost"> 
                                 10
                                 <img class="cost" src="../../images/coin.svg">
                             </div>
                         </p>
-                    </div>
+                    </div> 
                     <div class="col-sm">
-                        <p class='itemName'>Comet</p>
-                        <img src="../../images/temp/reindeer.png" alt="" class="item">
+                        <p class='itemName'>Cookie</p>
+                        <img src="../../images/temp/cookie.png" alt="" class="item">
                         <p id="itemName">
-                            <div> 
+                            <div class="itemCost"> 
                                 15
                                 <img class="cost" src="../../images/coin.svg">
                             </div>
