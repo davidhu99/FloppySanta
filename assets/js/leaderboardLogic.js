@@ -16,4 +16,3 @@ $( document ).ready(function() {
     .then(response => response.text())
     .then(text => displayLeaderBoard(text))
 });
-

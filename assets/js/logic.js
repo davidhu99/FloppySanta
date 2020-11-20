@@ -12,9 +12,10 @@ let start_x;
 let chimney_pic = "../../images/chimney.png";
 let icicle_pic = "../../images/icicle.png";
 let coin_pic = "../../images/coin.png";
-let present_pic = "../../images/present_temp.svg";
+let present_pic = "../../images/present.png";
 let movement_interval_handle;
 let gravity_interval_handle;
+let collision_interval_handle;
 let obstacle_idx = 0;
 let present_idx = 0;
 let player;
@@ -24,26 +25,22 @@ let coinsCounter;
 $(document).ready( function() {
     game_window = $(".container");
     start_x = parseInt(game_window.css("left")) + 300;
-    // start_x = 100;
+    // start_x = 300;
     
     player = $('#player');
     scoreCounter = $('#scoreCounter');
     coinsCounter = $('#coinsCounter');
+    coinsCounter.text(localStorage.getItem("coins"));
 
     // user keyboard input
     $(window).keydown(keydownRouter);
-
-    // periodically check for collisions
-    setInterval(function() {
-        checkCollisions();
-    }, 25);
 
     console.log("begin game")
     start_game();
 });
 
 function start_game(){
-    // create_obstacle();
+    create_obstacle();
     movement_interval_handle = setInterval(create_obstacle, GENERATE_SPEED);
 
     gravity_interval_handle = setInterval(function() {
@@ -53,28 +50,33 @@ function start_game(){
         // }
         player.css('top', newPos);
     }, 100);
+
+    // periodically check for collisions
+    collision_interval_handle = setInterval(function() {
+        checkCollisions();
+    }, 25);
 };
 
 function get_random_height(){
     // return (Math.random() * (max - min)) + min;
-    let max = -10;
-    let min = -350;
+    let max = 0;
+    let min = -250;
     return (Math.random() * (max - min)) + min;
 }
 
 function create_obstacle(){
     let top_height = get_random_height();
-    let bottom_height = top_height + 400; 
+    let bottom_height = top_height + 550; 
     let middle_height = top_height + 450; // 30 is half of coin size
     // let top_height = 0;
     // let bottom_height = 0;
     // let middle_height = 0;
 
     let icicle_string = "<div id='i-" + obstacle_idx + "' style='position: absolute; left:" 
-                        + (start_x + 10 )+ "px; top:" + top_height + "px' class='icicle'><img class='icicle' src='" 
+                        + start_x + "px; top:" + top_height + "px' class='icicle'><img class='icicle' src='" 
                         + icicle_pic + "'>";
     let coin_string = "<div id='co-" + obstacle_idx + "' style='position: absolute; left:" 
-                        + (start_x + 115) + "px; top:" + middle_height + "px' class='coin'><img class='coin' src='" 
+                        + (start_x + 30) + "px; top:" + middle_height + "px' class='coin'><img class='coin' src='" 
                         + coin_pic + "'>";
     let chimney_string = "<div id='c-" + obstacle_idx + "' style='position: absolute; left:" 
                         + start_x + "px; top:" + bottom_height + "px' class='chimney'><img class='chimney' src='" 
@@ -109,8 +111,8 @@ function move_obstacles(id){
                 coinObj.remove();
                 chimneyObj.remove();
             }
-            icicleObj.css('left', newXPos + 10); 
-            coinObj.css('left', newXPos + 115); 
+            icicleObj.css('left', newXPos); 
+            coinObj.css('left', newXPos + 30); 
             chimneyObj.css('left', newXPos); 
             // console.log("moving item");
         }, i * 10);
@@ -119,28 +121,32 @@ function move_obstacles(id){
 
 function move_presents(id, upwards){
     let xChange = 2;
-    let yChange = 5;
+    let yChange = 3;
     let iterationsLeft = Math.max(window.innerWidth / xChange, window.innerHeight / yChange);
     let presentObj = $("#p-" + id);
+    var decremented = false; 
     for (let i = 0; i < iterationsLeft; i++){
         setTimeout(function(){ 
             let newXPos = parseInt(presentObj.css("left")) - xChange;
             if (newXPos < -40){
                 presentObj.remove();
+                if (!decremented){
+                    scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
+                    decremented = true;
+                }
             }
             presentObj.css('left', newXPos); 
             let newYPos = parseInt(presentObj.css("top")) + yChange;
             if (newYPos > 560){
                 presentObj.remove();
+                if (!decremented){
+                    scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
+                    decremented = true;
+                }
             }
             presentObj.css('top', newYPos); 
         }, i * 10);
     }
-}
-
-function increase_Score(){
-    let score = parseInt($("#score").text().slice(7)) + 1;
-    $("#score").text("Score: " + score);
 }
 
 function keydownRouter(e) {
@@ -191,12 +197,13 @@ function isCollidingPlayer(o1, o2) {
     var itemClass = "." + tempImg.className;
     var o2D;
     if (tempImg.className == "chimney") {
-        o2D = { 'left': parseInt(o2.style.left) + 335,
-                'right': parseInt(o2.style.left) + 400,
-                'top': parseInt(o2.style.top) + 235,
-                'bottom': parseInt(o2.style.top) + $(itemClass).height()
+        o2D = { 'left': parseInt(o2.style.left) + 230,
+                'right': parseInt(o2.style.left) + 300,
+                'top': parseInt(o2.style.top) + 80,
+                'bottom': parseInt(o2.style.top) + 180
         };
-    } else if (tempImg.className == "icicle") {
+    }
+    else if (tempImg.className == "icicle") {
         o2D = { 'left': parseInt(o2.style.left),
                 'right': parseInt(o2.style.left) + $(itemClass).width(),
                 'top': parseInt(o2.style.top),
@@ -234,9 +241,9 @@ function isColliding(o1, o2) {
     var itemClass2 = "." + tempImg2.className;
     var o2D;
     if (tempImg2.className == "chimney") {
-        o2D = { 'left': parseInt(o2.style.left) + 100,
-                'right': parseInt(o2.style.left) + 350,
-                'top': parseInt(o2.style.top) + 170,
+        o2D = { 'left': parseInt(o2.style.left),
+                'right': parseInt(o2.style.left) + $(itemClass2).width(),
+                'top': parseInt(o2.style.top) + 5,
                 'bottom': parseInt(o2.style.top) + $(itemClass2).height()
         };
     } else if (tempImg2.className == "icicle") {
@@ -272,7 +279,7 @@ function checkCollisions() {
         if (isCollidingPlayer(player, icicles[i])) {
             // console.log("Icicle hit");
             // game over state
-            // alert("Game over");
+            // game_over();
         }
     }
 
@@ -282,7 +289,7 @@ function checkCollisions() {
         if (isCollidingPlayer(player, chimneys[i])) {
             console.log("Chimney hit");
             // game over state
-            alert("Game over");
+            game_over();
         }
     }
 
@@ -292,27 +299,27 @@ function checkCollisions() {
         if (isCollidingPlayer(player, coins[i])) {
             console.log("Coin hit");
             // add to coin count
-            coinsCounter[0].innerHTML = String(parseInt(coinsCounter[0].innerHTML) + 1);
+            coinsCounter.text(parseInt(coinsCounter.text())+1);
             var id = "#" + coins[i].id;
             $(id).remove();
         }
     }
 
     // 4. Santa collision with window bottom edge -> game over
-    if (parseInt(player.css('top')) > 504) {
+    if (parseInt(player.css('top')) > 518) {
         // game over state
-        alert("Game over");
+        game_over();
     }
 
     var presents = $('[id^="p-"]');
     for (var i = 0; i < presents.length; i++) {
+        var id = "#" + presents[i].id;
         // 5. Present collision with chimney -> add to score
         for (var j = 0; j < chimneys.length; j++) {
             if (isColliding(presents[i], chimneys[j])) {
                 console.log("Present hit chimney");
                 // add to score
                 scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) + 1);
-                var id = "#" + presents[i].id;
                 $(id).remove();
             }
         }
@@ -324,5 +331,23 @@ function checkCollisions() {
             }
         }
         // 7. Present collision with window edge -> subtract from score
+        // if () {
+        //     console.log("Present didn't hit anything");
+        //     // subtract from score
+            // scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
+        //     $(id).remove
+        // }
     }
+}
+
+function game_over(){
+    clearInterval(movement_interval_handle);
+    clearInterval(gravity_interval_handle);
+    clearInterval(collision_interval_handle)
+    console.log("game_over");
+    $(".end_container").css("display", "");
+    $("#endScoreCounter").text(parseInt($("#scoreCounter").text()));
+
+    localStorage.setItem("coins", $("#coinsCounter").text());
+    
 }
