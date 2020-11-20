@@ -30,12 +30,17 @@ $(document).ready( function() {
     player = $('#player');
     scoreCounter = $('#scoreCounter');
     coinsCounter = $('#coinsCounter');
-    coinsCounter.text(localStorage.getItem("coins"));
 
     // user keyboard input
     $(window).keydown(keydownRouter);
 
     console.log("begin game")
+
+    if (localStorage.getItem("coins") == null){
+        console.log("setting coin");
+        localStorage.setItem("coins", "0");
+    }
+    coinsCounter.text(localStorage.getItem("coins"));
     start_game();
 });
 
