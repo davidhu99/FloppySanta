@@ -203,21 +203,21 @@ function isCollidingPlayer(o1, o2) {
     var o2D;
     if (tempImg.className == "chimney") {
         o2D = { 'left': parseInt(o2.style.left) + 230,
-                'right': parseInt(o2.style.left) + 300,
+                'right': parseInt(o2.style.left) + 340,
                 'top': parseInt(o2.style.top) + 80,
                 'bottom': parseInt(o2.style.top) + 180
         };
     }
     else if (tempImg.className == "icicle") {
-        o2D = { 'left': parseInt(o2.style.left),
-                'right': parseInt(o2.style.left) + $(itemClass).width(),
+        o2D = { 'left': parseInt(o2.style.left) + 230,
+                'right': parseInt(o2.style.left) + 425,
                 'top': parseInt(o2.style.top),
-                'bottom': parseInt(o2.style.top) + $(itemClass).height()
+                'bottom': parseInt(o2.style.top) + $(itemClass).height() + 40
         };
     }
     else { // coin
         o2D = { 'left': parseInt(o2.style.left) + 265,
-                'right': parseInt(o2.style.left) + 365,
+                'right': parseInt(o2.style.left) + 305,
                 'top': parseInt(o2.style.top) + 70,
                 'bottom': parseInt(o2.style.top) + $(itemClass).height()
         };
@@ -282,9 +282,10 @@ function checkCollisions() {
     var icicles = $('[id^="i-"]');
     for (var i = 0; i < icicles.length; i++) {
         if (isCollidingPlayer(player, icicles[i])) {
-            // console.log("Icicle hit");
+            console.log("Icicle hit");
             // game over state
-            // game_over();
+            // alert("Hi");
+            game_over();
         }
     }
 
