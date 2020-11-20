@@ -137,6 +137,7 @@ function move_presents(id, upwards){
                 presentObj.remove();
                 if (!decremented){
                     scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
+                    console.log("Dec 1");
                     decremented = true;
                 }
             }
@@ -146,6 +147,7 @@ function move_presents(id, upwards){
                 presentObj.remove();
                 if (!decremented){
                     scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
+                    console.log("Dec 2");
                     decremented = true;
                 }
             }
@@ -323,10 +325,10 @@ function checkCollisions() {
         // 5. Present collision with chimney -> add to score
         for (var j = 0; j < chimneys.length; j++) {
             if (isColliding(presents[i], chimneys[j])) {
+                $(id).remove();
                 console.log("Present hit chimney");
                 // add to score
-                scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) + 1);
-                $(id).remove();
+                scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) + 2);
             }
         }
         // 6. Present collision with icicle -> subtract from score
@@ -336,13 +338,6 @@ function checkCollisions() {
                 // subtract from score
             }
         }
-        // 7. Present collision with window edge -> subtract from score
-        // if () {
-        //     console.log("Present didn't hit anything");
-        //     // subtract from score
-            // scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
-        //     $(id).remove
-        // }
     }
 }
 
