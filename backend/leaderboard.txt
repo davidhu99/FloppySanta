@@ -1,6 +1,6 @@
-dave 200
-olive 200
-d 200
+dave 20
+olive 19
+d 18
 dave 17 
 olive 10 
 johnny 9 
