@@ -6,36 +6,35 @@ function checkPurchase(numCoins, cost){
 }
 
 function addToInventory(item){ 
-    inventory = localStorage.getItem("inventory")
-    if (inventory === null) { 
-        inventory = []
+    inventory = JSON.parse(localStorage.getItem("inventory"));
+    if (inventory === null){ 
+        inventory = new Array
     }
-    itemName = $(item).find('.itemName').text()
-    itemSrc = $(item).find('.item').attr('src');
+    itemName = $(item).find('#itemName').text().trim()
+    console.log(itemName)
+    // itemSrc = $(item).find('.item').attr('src');
 
-
-    inventory.push({
-        key:  itemName,
-        value: itemSrc
-    });
-
+    inventory.push(itemName)
     localStorage.setItem("inventory", JSON.stringify(inventory));
-
-    objects = JSON.parse(localStorage.getItem("inventory"));
-    console.log(objects)
 }
 
 function buyItem(item){ 
-
     cost = parseInt($(item).find(".itemCost").text())
     $(".purchaseButton").css("display", "inline-block");
     $(".errorPurchase").css("display", "none");
     $( ".yes" ).click(function() {
         addToInventory(item)
+        item.remove()
     });
 }
-$( document ).ready(function() {
 
+$( document ).ready(function() {
+    if (localStorage.coins === undefined){ 
+        $(".numCoins").text(0)
+    } else {
+        $(".numCoins").text(localStorage.coins)
+    }
+    $(".numCoins").text(localStorage.coins)
     $( ".purchaseButton" ).click(function() {
         // get current coins
         numCoins = parseInt($('.numCoins').text())
@@ -54,6 +53,7 @@ $( document ).ready(function() {
 
     $( ".yes" ).click(function() {
         numCoins = numCoins - cost
+        localStorage.coins = numCoins
         $('.numCoins').text(numCoins)
         $(".purchaseConfirmBox").css("display", "none");
         $(".purchaseButton").css("display", "none");
