@@ -352,8 +352,8 @@ function game_over(){
 
     localStorage.setItem("coins", $("#coinsCounter").text());
     
-    score = $("#endScoreCounter").text()
-    if (score > localStorage.lowestScore){
+    score = parseInt($("#endScoreCounter").text())
+    if (score > parseInt(localStorage.lowestScore)){
         console.log('hello')
         $('.addToLeaderboard').css("display", "block")
         $(".addToLeaderboardBtn").attr("href", "http://0.0.0.0:5000/" + score)
