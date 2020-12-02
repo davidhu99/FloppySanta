@@ -16,6 +16,7 @@ body {
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
+	background-image: url(../../images/gamebg.jpg);
 }
 
 .shop {
@@ -33,11 +34,29 @@ body {
 }
 
 .shopWindow {
-	background-color: #d1d6cf;
+	/* background-color: #d1d6cf; */
 	margin-top: 0;
 	font-family: 'Mountains of Christmas', cursive;
+	background-image: url(../../images/shopbg.png);
 
-	background: #f8dccd;
+	/* background: #f8dccd; */
+	height: 82vh;
+	width: 67vw;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+.invWindow {
+	/* background-color: #d1d6cf; */
+	margin-top: 0;
+	font-family: 'Mountains of Christmas', cursive;
+	background-image: url(../../images/inventory.png);
+
+	/* background: #f8dccd; */
 	height: 82vh;
 	width: 67vw;
 	text-align: center;
@@ -123,6 +142,10 @@ a {
 
 .market p {
 	font-size: 3rem;
+}
+
+.items {
+	margin-top: 100px;
 }
 
 .item {
