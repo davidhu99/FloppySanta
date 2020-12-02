@@ -7,4 +7,4 @@ johnny 5
 angela 5 
 jason 5
 steve 5
-dave 3
+dave -1

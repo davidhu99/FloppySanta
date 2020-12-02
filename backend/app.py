@@ -25,7 +25,7 @@ def submit():
         with open('leaderboard.txt', 'w') as writer:
             for score in score_list:
                 writer.write(score + '\n')
-        return redirect("http://0.0.0.0:8000/assets/html/leaderboard.html")
+        return redirect("http://localhost:8000/assets/html/leaderboard.html")
 
 if __name__ == '__main__':
     app.debug = True
