@@ -15,40 +15,40 @@ body {
 	/* height: 1000px; */
 }
 
-.coin{
-    width: 40px;
+.coin {
+	width: 40px;
 	height: 40px;
 }
 
-.present{
+.present {
 	width: 30px;
 	height: auto;
 	display: inline-block;
-  	z-index: 1;
+	z-index: 1;
 }
 
-#score{
-    font-weight: bold;
-    font-size: 30px;
-    position: relative;
-	margin-left: 80%;
-	z-index: 3;
-}
-
-#endScore{
+#score {
 	font-weight: bold;
-    font-size: 40px;
-}
-
-#coins{
-    font-weight: bold;
-    font-size: 30px;
-    position: relative;
+	font-size: 30px;
+	position: relative;
 	margin-left: 80%;
 	z-index: 3;
 }
 
-#player{
+#endScore {
+	font-weight: bold;
+	font-size: 40px;
+}
+
+#coins {
+	font-weight: bold;
+	font-size: 30px;
+	position: relative;
+	margin-left: 80%;
+	z-index: 3;
+}
+
+#player {
 	top: 50%;
 	left: 20%;
 	position: absolute;
@@ -56,31 +56,35 @@ body {
 	z-index: 2;
 }
 
-.border{
+.border {
 	position: absolute;
 	background-color: #d1d6cf;
 	color: #d1d6cf;
 	z-index: 2;
 }
 
-.right{
+.right {
 	right: 0;
 	height: 100vh;
 	width: 16vw;
 }
 
-.left{
+.left {
 	height: 100vh;
 	width: 16vw;
 }
 
-.top{
+.top {
 	height: 9vh;
 	width: 100vw;
 }
 
-.bottom{
+.bottom {
 	height: 9vh;
 	width: 100vw;
 	bottom: 0;
+}
+
+.addToLeaderboard {
+	display: none;
 }

@@ -344,11 +344,18 @@ function checkCollisions() {
 function game_over(){
     clearInterval(movement_interval_handle);
     clearInterval(gravity_interval_handle);
-    clearInterval(collision_interval_handle)
+    clearInterval(collision_interval_handle);
+    
     console.log("game_over");
     $(".end_container").css("display", "");
     $("#endScoreCounter").text(parseInt($("#scoreCounter").text()));
 
     localStorage.setItem("coins", $("#coinsCounter").text());
     
+    score = $("#endScoreCounter").text()
+    if (score > localStorage.lowestScore){
+        console.log('hello')
+        $('.addToLeaderboard').css("display", "block")
+        $(".addToLeaderboardBtn").attr("href", "http://0.0.0.0:80/" + score)
+    }
 }

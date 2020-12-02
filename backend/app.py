@@ -1,19 +1,18 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
 
 
-@app.route('/')
-def index():
-    
-    return render_template('submit.html')
+@app.route('/<score>')
+def index(score):
+    return render_template('submit.html', score=score)
 
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':       
+        score = request.form['score']
         username = request.form['username']
-        score = 200 # hardcoded for now 
         if username == '': 
-            return render_template('submit.html',  message="Whoops,please enter a valid username!")
+            return render_template('submit.html', score=score, message="Whoops,please enter a valid username!")
 
         with open('leaderboard.txt') as f:
             score_list = f.read().splitlines()
@@ -26,7 +25,7 @@ def submit():
         with open('leaderboard.txt', 'w') as writer:
             for score in score_list:
                 writer.write(score + '\n')
-        return render_template('leaderboard.html', score_list=score_list)
+        return redirect("http://0.0.0.0:8000/assets/html/leaderboard.html")
 
 if __name__ == '__main__':
     app.debug = True
