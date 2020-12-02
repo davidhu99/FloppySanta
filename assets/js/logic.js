@@ -356,6 +356,6 @@ function game_over(){
     if (score > localStorage.lowestScore){
         console.log('hello')
         $('.addToLeaderboard').css("display", "block")
-        $(".addToLeaderboardBtn").attr("href", "http://0.0.0.0:80/" + score)
+        $(".addToLeaderboardBtn").attr("href", "http://0.0.0.0:5000/" + score)
     }
 }
