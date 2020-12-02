@@ -1,3 +1,5 @@
+var selection = ''
+
 function checkPurchase(numCoins, cost){ 
     if (numCoins < cost){ 
         return false
@@ -5,27 +7,25 @@ function checkPurchase(numCoins, cost){
     return true
 }
 
-function addToInventory(item){ 
+function addToInventory(item){
+
+    console.log(item)
+    item.remove()
     inventory = JSON.parse(localStorage.getItem("inventory"));
     if (inventory === null){ 
         inventory = new Array
     }
     itemName = $(item).find('#itemName').text().trim()
-    console.log(itemName)
-    // itemSrc = $(item).find('.item').attr('src');
 
     inventory.push(itemName)
     localStorage.setItem("inventory", JSON.stringify(inventory));
 }
 
-function buyItem(item){ 
+function buyItem(item){
+
     cost = parseInt($(item).find(".itemCost").text())
     $(".purchaseButton").css("display", "inline-block");
     $(".errorPurchase").css("display", "none");
-    $( ".yes" ).click(function() {
-        addToInventory(item)
-        item.remove()
-    });
 }
 
 $( document ).ready(function() {
@@ -57,19 +57,19 @@ $( document ).ready(function() {
         $('.numCoins').text(numCoins)
         $(".purchaseConfirmBox").css("display", "none");
         $(".purchaseButton").css("display", "none");
+        addToInventory(selection)
     });
 
     // get and set currentSkin
     currSkin = localStorage.getItem("currSkin")
     $(".currChar").attr("src",currSkin);
 
-
     $( ".col-sm" ).each(function() {
         $(this).click(function() {
             $(".purchaseConfirmBox").css("display", "none");
             selectedSkin = $(this).find('img').attr('src')
             $(".currChar").attr("src",selectedSkin)
-
+            selection = this
             buyItem(this)
         })
     });
