@@ -5,7 +5,7 @@ $( document ).ready(function() {
         localStorage.setItem("currSkin", '../../images/santa.png')
         inventory = dict()
         localStorage.setItem("inventory", JSON.stringify(inventory));
-
+        localStorage.setItem("coins", 0)
         console.log(localStorage.getItem("currSkin"))
     }
     console.log(localStorage.getItem("currSkin"))
