@@ -87,7 +87,9 @@ function create_obstacle(){
                         + start_x + "px; top:" + bottom_height + "px' class='chimney'><img class='chimney' src='" 
                         + chimney_pic + "'>";
     $(icicle_string).appendTo(".container");
-    $(coin_string).appendTo(".container");
+    if (Math.random() > 0.5){
+        $(coin_string).appendTo(".container");
+    }
     $(chimney_string).appendTo(".container");
     move_obstacles(obstacle_idx);
     obstacle_idx++;
@@ -108,6 +110,7 @@ function move_obstacles(id){
     let icicleObj = $("#i-" + id);
     let coinObj = $("#co-" + id);
     let chimneyObj = $("#c-" + id);
+    var addedScore = false;
     for (let i = 0; i < iterationsLeft; i++){
         setTimeout(function(){ 
             let newXPos = parseInt(chimneyObj.css("left")) - xChange;
@@ -115,6 +118,12 @@ function move_obstacles(id){
                 icicleObj.remove();
                 coinObj.remove();
                 chimneyObj.remove();
+            }
+            if (newXPos < parseInt(player.css("left"))){
+                if (!addedScore){
+                    addedScore = true;
+                    scoreCounter.text(parseInt(scoreCounter.text()) + 1);
+                }
             }
             icicleObj.css('left', newXPos); 
             coinObj.css('left', newXPos + 30); 
