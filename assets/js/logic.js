@@ -137,26 +137,28 @@ function move_presents(id, upwards){
     let xChange = 2;
     let yChange = 3;
     let iterationsLeft = Math.max(window.innerWidth / xChange, window.innerHeight / yChange);
-    let presentObj = $("#p-" + id);
     var decremented = false; 
     for (let i = 0; i < iterationsLeft; i++){
         setTimeout(function(){ 
+            let presentObj = $("#p-" + id);
             let newXPos = parseInt(presentObj.css("left")) - xChange;
-            if (newXPos < -40){
-                presentObj.remove();
-                if (!decremented){
-                    scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
-                    console.log("Dec 1");
-                    decremented = true;
-                }
-            }
+            // if (newXPos < -40){
+            //     presentObj.remove();
+            //     if (!decremented){
+            //         scoreCounter.text(parseInt(scoreCounter.text()) - 1);
+            //         decremented = true;
+            //     }
+                
+            //     // presentObj.scoreVal = 0;
+            // }
+
+            // reaches bottom before the left
             presentObj.css('left', newXPos); 
             let newYPos = parseInt(presentObj.css("top")) + yChange;
             if (newYPos > 560){
                 presentObj.remove();
                 if (!decremented){
-                    scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) - 1);
-                    console.log("Dec 2");
+                    scoreCounter.text(parseInt(scoreCounter.text()) - 1);
                     decremented = true;
                 }
             }
@@ -337,16 +339,16 @@ function checkCollisions() {
                 $(id).remove();
                 console.log("Present hit chimney");
                 // add to score
-                scoreCounter[0].innerHTML = String(parseInt(scoreCounter[0].innerHTML) + 2);
+                scoreCounter.text(parseInt(scoreCounter.text()) + 1);
             }
         }
-        // 6. Present collision with icicle -> subtract from score
-        for (var j = 0; j < icicles.length; j++) {
-            if (isColliding(presents[i], icicles[j])) {
-                console.log("Present hit icicle");
-                // subtract from score
-            }
-        }
+        // // 6. Present collision with icicle -> subtract from score
+        // for (var j = 0; j < icicles.length; j++) {
+        //     if (isColliding(presents[i], icicles[j])) {
+        //         console.log("Present hit icicle");
+        //         // subtract from score
+        //     }
+        // }
     }
 }
 

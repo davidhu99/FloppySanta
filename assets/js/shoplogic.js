@@ -37,6 +37,36 @@ $( document ).ready(function() {
         $(".numCoins").text(localStorage.coins)
     }
 
+    skins = { 
+        "Elf": "../../images/elf.png", 
+        "Elf 2": "../../images/elf2.png",
+        "Gingerbread Man": "../../images/gingerbreadman.png",
+        "Gingerbread Man 2": "../../images/gingerbreadman2.png",
+        "Reindeer": "../../images/reindeer.png",
+        "Snowman": "../../images/snowman.png"
+    }
+    // console.log('hello world')
+    inventory = JSON.parse(localStorage.getItem("inventory"));
+    myInventory = new Set(inventory)
+    let itemsRemaining = [];
+    for (var skin in skins){
+        if (!myInventory.has(skin)){
+            itemsRemaining[skin] = skins[skin];
+            console.log(itemsRemaining[skin]);
+        }
+    }
+    // console.log(itemsRemaining);
+    index = 0
+    for (var skin in itemsRemaining){
+        $("." + index).find("#itemName").text(skin);
+        $("." + index).find(".item").attr("src", skins[skin]);
+        $("." + index).find(".itemCost").text(10);
+        $("." + index + " .cost img").attr("src", "../../images/coin.png");
+
+        index += 1
+    }
+        
+
     $(".close").css("visibility", "hidden")
 
     $(".numCoins").text(localStorage.coins)

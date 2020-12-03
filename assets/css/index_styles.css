@@ -134,9 +134,13 @@ a {
 
 .currChar {
 	margin-left: 10%;
+<<<<<<< HEAD
+	padding-top: 20%;
+=======
 	margin-top: 20%;
+>>>>>>> 8faca76edad070c3214dc56c520db86164f2f36e
 	height: 50%;
-	width: 80%;
+	width: 60%;
 	display: inline-block;
 }
 

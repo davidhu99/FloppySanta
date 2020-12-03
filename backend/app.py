@@ -13,6 +13,8 @@ def submit():
         username = request.form['username']
         if username == '': 
             return render_template('submit.html', score=score, message="Whoops,please enter a valid username!")
+        if ' ' in username:
+            return render_template('submit.html', score=score, message="No spaces please!")
 
         with open('leaderboard.txt') as f:
             score_list = f.read().splitlines()
