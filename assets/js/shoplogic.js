@@ -29,12 +29,18 @@ function buyItem(item){
 }
 
 $( document ).ready(function() {
+
+
     if (localStorage.coins === undefined){ 
         $(".numCoins").text(0)
     } else {
         $(".numCoins").text(localStorage.coins)
     }
+
+    $(".close").css("visibility", "hidden")
+
     $(".numCoins").text(localStorage.coins)
+
     $( ".purchaseButton" ).click(function() {
         // get current coins
         numCoins = parseInt($('.numCoins').text())
@@ -60,6 +66,13 @@ $( document ).ready(function() {
         addToInventory(selection)
     });
 
+    $(".close").click(function(){ 
+        currSkin = localStorage.getItem("currSkin")
+        $(".currChar").attr("src",currSkin);
+        $(".purchaseButton").css("display", "none");
+        $(".close").css("visibility", "hidden")
+    })
+
     // get and set currentSkin
     currSkin = localStorage.getItem("currSkin")
     $(".currChar").attr("src",currSkin);
@@ -71,6 +84,7 @@ $( document ).ready(function() {
             $(".currChar").attr("src",selectedSkin)
             selection = this
             buyItem(this)
+            $(".close").css("visibility", "visible")
         })
     });
 
