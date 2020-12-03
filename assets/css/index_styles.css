@@ -133,10 +133,10 @@ a {
 }
 
 .currChar {
-	margin-left: 5%;
+	margin-left: 10%;
 	padding-top: 20%;
 	height: 50%;
-	width: 80%;
+	width: 60%;
 	display: inline-block;
 }
 

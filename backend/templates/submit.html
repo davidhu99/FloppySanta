@@ -7,29 +7,31 @@
     <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <div class = submit>
-        <form action="/submit" method="POST" >
-            <div> 
-                <p>
-                Congrats, you scored in the Top 10!
-                </p>
-                <p>
-                    Your Score:
-                </p>
-                <p class="score">
-                    {{score}}
-                </p>
-                <p>
-                    Enter your name to add to leaderboard:
-                </p>
-                {% if message %} 
-                    <p class='invalid'> {{ message | safe }} </p>
-                {% endif %}
-                <input style="display: none;" type="number" name="score" value={{score}}>
-                <input type="text" name="username" minlength='1' maxlength="11">
-                <input type="submit" value="Submit">
-            </div>
-        </form>
+    <div class="container">
+        <div class = submit>
+            <form action="/submit" method="POST" >
+                <div> 
+                    <p class="topText">
+                    <b>Congrats, you scored in the Top 10!</b>
+                    </p>
+                    <p>
+                        Your Score:
+                    </p>
+                    <p class="score">
+                        {{score}}
+                    </p>
+                    <p>
+                        Enter your name to add to leaderboard:
+                    </p>
+                    {% if message %} 
+                        <p class='invalid'> {{ message | safe }} </p>
+                    {% endif %}
+                    <input style="display: none;" type="number" name="score" value={{score}}>
+                    <input type="text" name="username" minlength='1' maxlength="11">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div> 
     </div>
 </body>
 </html>
