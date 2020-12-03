@@ -6,3 +6,4 @@ Testing Instructions:
 2. Run: "./install.sh"
 3. Open a seperate terminal and run: "chmod +x run.sh"
 4. Run: "./run.sh"
+5. Open localhost:8000 to play the game!

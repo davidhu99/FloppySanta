@@ -6,7 +6,8 @@ body {
 	font-family: 'Mountains of Christmas', cursive;
 }
 
-.container, .end_container{
+.container,
+.end_container {
 	background: #f8dccd;
 	height: 82vh;
 	width: 68vw;
@@ -40,7 +41,7 @@ body {
 	margin-top: 0;
 	font-family: 'Mountains of Christmas', cursive;
 	background-image: url(../../images/shopbg.png);
-	background-size:100% auto;
+	background-size: 100% auto;
 	background-repeat: no-repeat;
 	/* background: #f8dccd; */
 	height: 82vh;
@@ -51,7 +52,6 @@ body {
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
-	
 }
 
 .invWindow {
@@ -59,9 +59,9 @@ body {
 	margin-top: 0;
 	font-family: 'Mountains of Christmas', cursive;
 	background-image: url(../../images/inventory.png);
-	background-size:100% auto;
+	background-size: 100% auto;
 	background-repeat: no-repeat;
-	
+
 	/* background: #f8dccd; */
 	height: 82vh;
 	width: 67vw;
@@ -133,8 +133,8 @@ a {
 }
 
 .currChar {
-	margin-left: 5%;
-	padding-top: 20%;
+	margin-left: 10%;
+	margin-top: 20%;
 	height: 50%;
 	width: 80%;
 	display: inline-block;
@@ -214,7 +214,7 @@ a {
 
 .close {
 	/* display: none; */
-	margin-right: 5%;
+	margin-right: 1%;
 }
 
 .close p {
