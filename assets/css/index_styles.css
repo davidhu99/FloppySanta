@@ -231,3 +231,13 @@ a {
 .rules:hover {
 	opacity: 80%;
 }
+
+#rules {
+	width: 70%;
+	margin: auto;
+	font-size: 150%;
+}
+
+#rules li {
+	word-spacing: 0.2rem;
+}
