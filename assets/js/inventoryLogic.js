@@ -17,7 +17,6 @@ $( document ).ready(function() {
     myInventory.forEach(element => {
         $("." + index).find("#itemName").text(element)
         $("." + index).find(".item").attr("src", skins[element]);
-
         index += 1
     });
 
