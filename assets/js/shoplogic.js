@@ -60,7 +60,7 @@ $( document ).ready(function() {
     for (var skin in itemsRemaining){
         $("." + index).find("#itemName").text(skin);
         $("." + index).find(".item").attr("src", skins[skin]);
-        $("." + index).find(".itemCost").text(10);
+        // $("." + index).find(".itemCost").text(10);
         $("." + index + " .cost img").attr("src", "../../images/coin.png");
 
         index += 1

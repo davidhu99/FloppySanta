@@ -129,11 +129,10 @@ a {
 	width: 38%;
 	float: left;
 	height: 100%;
-	border-right: black 1px solid;
 }
 
 .currChar {
-	margin-left: 10%;
+	margin-left: 19%;
 	margin-top: 20%;
 	height: 50%;
 	width: 60%;
@@ -159,7 +158,7 @@ a {
 }
 
 .items {
-	margin-top: 100px;
+	margin-top: 5.5rem;
 }
 
 .item {
@@ -175,9 +174,13 @@ a {
 	margin-bottom: 0.25rem;
 }
 
+.itemCost {
+	font-weight: bolder;
+}
+
 .cost {
 	vertical-align: middle;
-	height: 30px;
+	height: 20px;
 	/* margin-top: 20px; */
 }
 
