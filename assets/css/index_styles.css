@@ -17,6 +17,8 @@ body {
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
 	background-image: url(../../images/gamebg.jpg);
+	/* background-size:100% auto;
+	background-repeat: no-repeat; */
 }
 
 .shop {
@@ -38,7 +40,8 @@ body {
 	margin-top: 0;
 	font-family: 'Mountains of Christmas', cursive;
 	background-image: url(../../images/shopbg.png);
-
+	background-size:100% auto;
+	background-repeat: no-repeat;
 	/* background: #f8dccd; */
 	height: 82vh;
 	width: 67vw;
@@ -48,6 +51,7 @@ body {
 	left: 50%;
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
+	
 }
 
 .invWindow {
@@ -55,7 +59,9 @@ body {
 	margin-top: 0;
 	font-family: 'Mountains of Christmas', cursive;
 	background-image: url(../../images/inventory.png);
-
+	background-size:100% auto;
+	background-repeat: no-repeat;
+	
 	/* background: #f8dccd; */
 	height: 82vh;
 	width: 67vw;
