@@ -7,11 +7,13 @@ body {
 
 .chimney {
 	width: 110px;
+	z-index: 1;
 	/* height: 1000px; */
 }
 
 .icicle {
 	width: 195px;
+	z-index: 1;
 	/* height: 1000px; */
 }
 
