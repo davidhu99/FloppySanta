@@ -31,10 +31,14 @@ ol {
 }
 
 .back {
-	height: 60px;
+	height: 90px;
 	float: left;
 	padding-top: 10px;
 	padding-left: 15px;
+}
+
+.back:hover {
+	opacity: 80%;
 }
 
 .wishlist {
