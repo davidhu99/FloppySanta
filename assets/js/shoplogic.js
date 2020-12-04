@@ -1,3 +1,13 @@
+// item cost chart!!! 
+var costDict = { 
+    'Elf':  5, 
+    'Elf 2': 5, 
+    'Gingerbread Man': 10, 
+    'Gingerbread Man 2': 10, 
+    'Reindeer': 20, 
+    'Snowman': 20
+}
+
 var selection = ''
 
 function checkPurchase(numCoins, cost){ 
@@ -58,9 +68,11 @@ $( document ).ready(function() {
     // console.log(itemsRemaining);
     index = 0
     for (var skin in itemsRemaining){
+        console.log(skin)
         $("." + index).find("#itemName").text(skin);
         $("." + index).find(".item").attr("src", skins[skin]);
-        // $("." + index).find(".itemCost").text(10);
+        $("." + index).find(".itemCost").text(costDict[skin]);
+        $("." + index).find(".itemCost").append("<img class='cost' src='../../images/coin.svg'>");
         $("." + index + " .cost img").attr("src", "../../images/coin.png");
 
         index += 1
@@ -75,6 +87,7 @@ $( document ).ready(function() {
         // get current coins
         numCoins = parseInt($('.numCoins').text())
         if (checkPurchase(numCoins, cost)){
+            $(".purchaseButton").css("display", "none");
             $(".purchaseConfirmBox").css("display", "inline-block");
         } else { 
             $(".errorPurchase").css("display", "block");
@@ -100,6 +113,8 @@ $( document ).ready(function() {
         currSkin = localStorage.getItem("currSkin")
         $(".currChar").attr("src",currSkin);
         $(".purchaseButton").css("display", "none");
+        $(".purchaseConfirmBox").css("display", "none");
+        $(".errorPurchase").css("display", "none");
         $(".close").css("visibility", "hidden")
     })
 

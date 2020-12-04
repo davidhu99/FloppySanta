@@ -132,8 +132,8 @@ a {
 }
 
 .currChar {
-	margin-left: 19%;
-	margin-top: 20%;
+	margin-left: 10%;
+	margin-top: 15%;
 	height: 50%;
 	width: 60%;
 	display: inline-block;
@@ -189,7 +189,6 @@ a {
 	/* padding-top: 40px; */
 	margin-top: 20px;
 	height: 40px;
-	width: 20%;
 	display: none;
 }
 
