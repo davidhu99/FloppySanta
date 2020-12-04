@@ -102,3 +102,8 @@ body {
 .addToLeaderboard {
 	display: none;
 }
+
+.endgameHomeButton {
+	display: inline-block;
+	height: 10vh;
+}
