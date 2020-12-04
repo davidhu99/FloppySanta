@@ -3,11 +3,11 @@ var costDict = {
     'McJingles':  5, 
     'Trinket': 5, 
     'Gingy': 10, 
-    'Freddy the Gingerbready': 25, 
-    'Rudolph': 30, 
-    'Frosty': 35,
-    'Po': 50, 
-    'Skipper': 60, 
+    'Freddy the Gingerbready': 10, 
+    'Rudolph': 15, 
+    'Frosty': 15,
+    'Po': 30, 
+    'Skipper': 40, 
     'Lebron': 100
 }
 
