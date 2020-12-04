@@ -31,6 +31,21 @@ h2 {
 	text-align: center;
 }
 
+.submitButton {
+	height: 5vh;
+	width: 7vw;
+	background-color: #bdcdea;
+	text-align: center;
+	border: white solid 5px;
+	border-radius: 10%;
+	color:white;
+	font-family: 'Mountains of Christmas', cursive;
+}
+
+.submitButton:hover {
+	opacity: 80%;
+}
+
 .invalid {
 	/* background-color: red; */
 	color: red;
