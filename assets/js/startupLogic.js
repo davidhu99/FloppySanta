@@ -10,7 +10,6 @@ $( document ).ready(function() {
     fetch('../../backend/leaderboard.txt')
     .then(response => response.text())
     .then(text => getLowestScore(text))
-
     // if there's no current skin, set to default
     if (localStorage.getItem("currSkin") == null) {
         localStorage.setItem("currSkin", '../../images/santa.png')

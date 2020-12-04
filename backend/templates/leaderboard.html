@@ -2,22 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.css">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/leaderboard_styles.css">
     <title>Floppy Santa</title>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <!-- <script src="../js/leaderboardLogic.js"></script> -->
 </head>
-
 <body>
+    
     <div class="leaderboard">
-        Leaderboard
-        <ol>
-            {% for s in score_list %}
-            <li >
-                {{ s }}
-            </li>        
+        <a href="http://localhost:8000/">
+            <img class='back' src="../static/images/homebutton.png" alt="">
+        </a>
+        <img class="wishlist" src="../static/images/leaderboard.png" alt="">
+        <p class="wishlistTitle"><b>Leaderboard</b></p>
+        <ol class=scores>
+            {% for i in scores %}
+                <li>{{ i }} </li>
             {% endfor %}
         </ol>
     </div>
 </body>
-
 </html>

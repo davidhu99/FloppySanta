@@ -27,7 +27,13 @@ def submit():
         with open('leaderboard.txt', 'w') as writer:
             for score in score_list:
                 writer.write(score + '\n')
-        return redirect("http://localhost:8000/assets/html/leaderboard.html")
+        return redirect("leaderboard")
+    
+@app.route('/leaderboard')
+def leaderboard():
+    with open('leaderboard.txt') as reader:
+        scores = reader.read().splitlines() 
+    return render_template('leaderboard.html', scores = scores)
 
 if __name__ == '__main__':
     app.debug = True
