@@ -247,3 +247,7 @@ a {
 #rules li {
 	word-spacing: 0.2rem;
 }
+
+.myStuff .row {
+	margin-top: 3rem;
+}

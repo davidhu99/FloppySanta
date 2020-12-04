@@ -9,6 +9,7 @@ function displayLeaderBoard(text) {
 }
 
 $( document ).ready(function() {
+    location.reload()
     fetch('../../backend/leaderboard.txt')
     .then(response => response.text())
     .then(text => displayLeaderBoard(text))
