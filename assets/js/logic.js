@@ -26,7 +26,7 @@ $(document).ready( function() {
     game_window = $(".container");
     start_x = parseInt(game_window.css("left")) + 300;
     // start_x = 300;
-    
+    $('.player-avatar').attr("src",localStorage.currSkin)    
     player = $('#player');
     scoreCounter = $('#scoreCounter');
     coinsCounter = $('#coinsCounter');
