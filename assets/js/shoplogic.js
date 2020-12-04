@@ -1,11 +1,14 @@
 // item cost chart!!! 
 var costDict = { 
-    'Elf':  5, 
-    'Elf 2': 5, 
-    'Gingerbread Man': 10, 
-    'Gingerbread Man 2': 10, 
-    'Reindeer': 20, 
-    'Snowman': 20
+    'McJingles':  5, 
+    'Trinket': 5, 
+    'Gingy': 10, 
+    'Freddy the Gingerbready': 25, 
+    'Rudolph': 30, 
+    'Frosty': 35,
+    'Po': 50, 
+    'Skipper': 60, 
+    'Lebron': 100
 }
 
 var selection = ''
@@ -48,12 +51,15 @@ $( document ).ready(function() {
     }
 
     skins = { 
-        "Elf": "../../images/elf.png", 
-        "Elf 2": "../../images/elf2.png",
-        "Gingerbread Man": "../../images/gingerbreadman.png",
-        "Gingerbread Man 2": "../../images/gingerbreadman2.png",
-        "Reindeer": "../../images/reindeer.png",
-        "Snowman": "../../images/snowman.png"
+        "McJingles": "../../images/McJingles.png", 
+        "Trinket": "../../images/Trinket.png",
+        "Gingy": "../../images/Gingy.png",
+        "Freddy the Gingerbready": "../../images/Freddy_the_Gingerbready.png",
+        "Rudolph": "../../images/Rudolph.png",
+        "Frosty": "../../images/Frosty.png",
+        "Po": "../../images/Po.png",
+        "Skipper": "../../images/Skipper.png",
+        "Lebron": "../../images/Lebron.png",
     }
     // console.log('hello world')
     inventory = JSON.parse(localStorage.getItem("inventory"));

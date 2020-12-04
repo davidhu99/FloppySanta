@@ -7,12 +7,15 @@ $( document ).ready(function() {
     $(".currChar").attr("src",currSkin);
 
     skins = { 
-        "Elf": "../../images/elf.png", 
-        "Elf 2": "../../images/elf2.png",
-        "Gingerbread Man": "../../images/gingerbreadman.png",
-        "Gingerbread Man 2": "../../images/gingerbreadman2.png",
-        "Reindeer": "../../images/reindeer.png",
-        "Snowman": "../../images/snowman.png"
+        "McJingles": "../../images/McJingles.png", 
+        "Trinket": "../../images/Trinket.png",
+        "Gingy": "../../images/Gingy.png",
+        "Freddy the Gingerbready": "../../images/Freddy_the_Gingerbready.png",
+        "Rudolph": "../../images/Rudolph.png",
+        "Frosty": "../../images/Frosty.png",
+        "Po": "../../images/Po.png",
+        "Skipper": "../../images/Skipper.png",
+        "Lebron": "../../images/Lebron.png",
     }
 
     inventory = JSON.parse(localStorage.getItem("inventory"));
