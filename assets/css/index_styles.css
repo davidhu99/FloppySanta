@@ -189,6 +189,11 @@ a {
 }
 
 .purchaseButton {
+	background-color: #bdcdea;
+	text-align: center;
+	border: white solid 5px;
+	border-radius: 10%;
+
 	/* padding-top: 40px; */
 	margin-top: 20px;
 	height: 40px;
@@ -199,12 +204,13 @@ a {
 	opacity: 70%;
 }
 .purchaseConfirmBox {
-	background-color: white;
+	background-color: #bdcdea;
+	border: white solid 3px;
+	border-radius: 3%;
 	padding: 15px;
 	width: 80%;
 	text-align: center;
 	margin-top: 20px;
-	border: black 1px solid;
 	display: none;
 	/* display: inline-block; */
 }
@@ -212,6 +218,11 @@ a {
 .purchaseOption {
 	margin-left: 20px;
 	margin-right: 20px;
+	background-color: #edf1fa;
+
+	text-align: center;
+	border:  white solid 3px;
+	border-radius: 10%;
 }
 
 .col-sm:hover {
