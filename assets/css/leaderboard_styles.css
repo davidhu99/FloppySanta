@@ -18,6 +18,9 @@ body {
 	background-color: #d1d6cf;
 	margin-top: 0;
 	font-family: 'Mountains of Christmas', cursive;
+	background-image: url("../../images/bg.jpg");
+	background-size: 100% auto;
+	background-repeat: no-repeat;
 }
 
 ol {

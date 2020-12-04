@@ -1,3 +1,9 @@
+body {
+	background-image: url("/images/bg.jpg");
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+}
+
 .container {
 	background: #f8dccd;
 	height: 82vh;
@@ -12,6 +18,16 @@
 	background-image: url(../../images/gamebg.jpg);
 }
 
+h1 {
+	font-size: 10vh;
+	margin: 0px;
+	
+}
+
+h2 {
+	font-size: 7vh;
+	margin-top: 0px;
+}
 .submit {
 	text-align: center;
 }
@@ -58,3 +74,4 @@ ol {
 .topText {
 	margin-top: 12%;
 }
+
