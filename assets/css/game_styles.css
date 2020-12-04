@@ -3,6 +3,9 @@ body {
 	margin: 0;
 	height: 100%;
 	overflow: hidden;
+	background-image: url("../../images/bg.jpg");
+	background-size: 100% auto;
+	background-repeat: no-repeat;
 }
 
 .chimney {
@@ -69,22 +72,31 @@ body {
 	right: 0;
 	height: 100vh;
 	width: 16vw;
+	background-image: url("../../images/rightbg.jpg");
+	background-size: 100% auto;
+
 }
 
 .left {
 	height: 100vh;
 	width: 16vw;
+	background-image: url("../../images/leftbg.jpg");
+	background-size: 100% auto;
 }
 
 .top {
 	height: 9vh;
 	width: 100vw;
+	background-image: url("../../images/bg.jpg");
+	background-size: 100% auto;
 }
 
 .bottom {
 	height: 9vh;
 	width: 100vw;
 	bottom: 0;
+	background-image: url("../../images/bottombg.jpg");
+	background-size: 100% auto;
 }
 
 .addToLeaderboard {

@@ -4,6 +4,9 @@ body {
 	background-color: #d1d6cf;
 	margin-top: 0;
 	font-family: 'Mountains of Christmas', cursive;
+	background-image: url("../../images/bg.jpg");
+	background-size: 100% auto;
+	background-repeat: no-repeat;
 }
 
 .container,
@@ -18,8 +21,6 @@ body {
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
 	background-image: url(../../images/gamebg.jpg);
-	/* background-size:100% auto;
-	background-repeat: no-repeat; */
 }
 
 .shop {
