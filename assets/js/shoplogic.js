@@ -111,6 +111,9 @@ $( document ).ready(function() {
         $('.numCoins').text(numCoins)
         $(".purchaseConfirmBox").css("display", "none");
         $(".purchaseButton").css("display", "none");
+        $(".close").css("visibility", "hidden")
+        localStorage.currSkin = selectedSkin
+        $(".currChar").attr("src",selectedSkin)
         addToInventory(selection)
     });
 
