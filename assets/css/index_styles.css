@@ -251,3 +251,23 @@ a {
 .myStuff .row {
 	margin-top: 3rem;
 }
+
+.equipButton {
+	/* padding-top: 40px; */
+	margin-top: 20px;
+	height: 40px;
+	display: none;
+	/* justify-content: center; */
+}
+
+.equipButton:hover {
+	opacity: 70%;
+}
+
+.equipped {
+	font-weight: bold;
+	color: lightgreen;
+	font-size: larger;
+	margin-top: 5%;
+	display: none;
+}

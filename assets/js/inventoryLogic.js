@@ -1,5 +1,10 @@
+var selection = ""
 
 $( document ).ready(function() {
+    $(".equipped").css("display", "none")
+
+    currSkin = localStorage.getItem("currSkin")
+    $(".currChar").attr("src",currSkin);
 
     skins = { 
         "Elf": "../../images/elf.png", 
@@ -9,7 +14,7 @@ $( document ).ready(function() {
         "Reindeer": "../../images/reindeer.png",
         "Snowman": "../../images/snowman.png"
     }
-    console.log('hello world')
+
     inventory = JSON.parse(localStorage.getItem("inventory"));
     myInventory = new Set(inventory)
 
@@ -17,8 +22,27 @@ $( document ).ready(function() {
     myInventory.forEach(element => {
         $("." + index).find("#itemName").text(element)
         $("." + index).find(".item").attr("src", skins[element]);
+        $("." + index).click(function() { 
+            if (skins[element] == localStorage.currSkin){
+                $(".currChar").attr("src", skins[element])
+                $(".equipped").css("display", "inline-block")
+                $(".equipButton").css("display", "none")
+
+            } else { 
+                $(".currChar").attr("src", skins[element])
+                $(".equipButton").css("display", "inline-block")
+                $(".equipped").css("display", "none")
+                selection = element
+            }
+        })
         index += 1
     });
-
+    
+    $(".equipButton").click(function(){ 
+        localStorage.currSkin = skins[selection]
+        $(".equipButton").css("display", "none")
+        $(".equipped").css("display", "inline-block")
+        console.log(localStorage.currSkin)
+    })
     
 })
