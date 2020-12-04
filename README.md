@@ -1,5 +1,5 @@
 # FloppySanta
-Park Plaza Pal's final project :) 
+Park Plaza Pals' final project :) 
 
 Testing Instructions: 
 1. Open terminal and run: "chmod +x install.sh"
