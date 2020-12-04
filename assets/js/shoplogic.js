@@ -132,10 +132,12 @@ $( document ).ready(function() {
         $(this).click(function() {
             $(".purchaseConfirmBox").css("display", "none");
             selectedSkin = $(this).find('img').attr('src')
-            $(".currChar").attr("src",selectedSkin)
-            selection = this
-            buyItem(this)
-            $(".close").css("visibility", "visible")
+            if (selectedSkin != ""){
+                $(".currChar").attr("src",selectedSkin)
+                selection = this
+                buyItem(this)
+                $(".close").css("visibility", "visible")
+            }
         })
     });
 
