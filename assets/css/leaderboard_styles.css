@@ -56,6 +56,7 @@ a .back {
 }
 
 .wishlistTitle {
+	font-size: 5vh;
 	position: absolute;
 	left: 48%;
 	transform: translate(-50%, -50%);
