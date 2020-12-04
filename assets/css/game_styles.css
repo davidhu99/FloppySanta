@@ -107,3 +107,7 @@ body {
 	display: inline-block;
 	height: 10vh;
 }
+
+.endgameHomeButton:hover {
+	opacity: 80%;
+}
