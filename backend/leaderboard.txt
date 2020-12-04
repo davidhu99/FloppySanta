@@ -6,5 +6,5 @@ name 13
 dave 12
 Jinji123 12
 Bdog 12
-oandd 11
-dave 10
+david 12
+awe 12
