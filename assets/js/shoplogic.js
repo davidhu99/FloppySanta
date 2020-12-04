@@ -101,9 +101,8 @@ $( document ).ready(function() {
     });
 
     $( ".no" ).click(function() {
-
         $(".purchaseConfirmBox").css("display", "none");
-        $(".purchaseButton").css("display", "none");
+        $(".purchaseButton").css("display", "inline-block");
     });
 
     $( ".yes" ).click(function() {
