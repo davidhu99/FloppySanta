@@ -32,7 +32,8 @@ h2 {
 }
 
 .invalid {
-	background-color: red;
+	/* background-color: red; */
+	color: red;
 	overflow: hidden;
 }
 
