@@ -10,3 +10,18 @@ Testing Instructions:
 
 
 <img src="demo/start_screen.png" width="1000">
+
+
+<img src="demo/how_to_play.png" width="1000">
+
+<img src="demo/game" width="1000">
+
+<img src="demo/shop" width="1000">
+
+<img src="demo/inventory" width="1000">
+
+<img src="demo/leaderboard" width="1000">
+
+
+
+
