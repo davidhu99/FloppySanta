@@ -8,10 +8,9 @@ Testing Instructions:
 4. Run: "./run.sh"
 5. Open localhost:8000 to play the game!
 
+<h4> Start Screen<h4/>
 
 <img src="demo/start_screen.png" width="650">
-
-
 <img src="demo/how_to_play.png" width="650">
 
 <img src="demo/game.png" width="650">
