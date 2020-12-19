@@ -14,13 +14,13 @@ Testing Instructions:
 
 <img src="demo/how_to_play.png" width="1000">
 
-<img src="demo/game" width="1000">
+<img src="demo/game.png" width="1000">
 
-<img src="demo/shop" width="1000">
+<img src="demo/shop.png" width="1000">
 
-<img src="demo/inventory" width="1000">
+<img src="demo/inventory.png" width="1000">
 
-<img src="demo/leaderboard" width="1000">
+<img src="demo/leaderboard.png" width="1000">
 
 
 
