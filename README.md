@@ -9,18 +9,18 @@ Testing Instructions:
 5. Open localhost:8000 to play the game!
 
 
-<img src="demo/start_screen.png" width="1000">
+<img src="demo/start_screen.png" width="650">
 
 
-<img src="demo/how_to_play.png" width="1000">
+<img src="demo/how_to_play.png" width="650">
 
-<img src="demo/game.png" width="1000">
+<img src="demo/game.png" width="650">
 
-<img src="demo/shop.png" width="1000">
+<img src="demo/shop.png" width="650">
 
-<img src="demo/inventory.png" width="1000">
+<img src="demo/inventory.png" width="650">
 
-<img src="demo/leaderboard.png" width="1000">
+<img src="demo/leaderboard.png" width="650">
 
 
 
