@@ -9,4 +9,4 @@ Testing Instructions:
 5. Open localhost:8000 to play the game!
 
 
-<img src="demo/start_screen.png" width="100">
+<img src="demo/start_screen.png" width="1000">
