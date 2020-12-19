@@ -2,11 +2,10 @@
 Park Plaza Pals' final project :) 
 
 Testing Instructions: 
-1. Open terminal and run: "chmod +x install.sh"
+1. Open terminal and run: "chmod +x install.sh" and "chmod +x run.sh"
 2. Run: "./install.sh"
-3. Open a seperate terminal and run: "chmod +x run.sh"
-4. Run: "./run.sh"
-5. Open localhost:8000 to play the game!
+4. In a seperate terminal window, run: "./run.sh"
+5. Open localhost:8000 in a browser to play the game!
 
 <h4>Start Screen<h4/>
 
